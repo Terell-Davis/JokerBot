@@ -1,5 +1,7 @@
 package com.tyskyworks.kakorot;
 
+import me.duncte123.botcommons.messaging.EmbedUtils;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -10,7 +12,12 @@ import javax.security.auth.login.LoginException;
 public class JokerBot {
 
     public static JDA jda;
-    public static String use = "-";
+
+    private JokerBot() throws LoginException{
+        EmbedUtils.setEmbedBuilder(
+                () -> new EmbedBuilder().setColor(0xfc0328).setFooter("Test")
+        );
+    }
 
     public static void main(String[] args) throws LoginException
     {
