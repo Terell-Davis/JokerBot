@@ -2,6 +2,8 @@ package com.tyskyworks.kakorot.command;
 
 import com.tyskyworks.kakorot.CommandManager;
 import com.tyskyworks.kakorot.Config;
+import me.duncte123.botcommons.messaging.EmbedUtils;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.ArrayList;
@@ -23,13 +25,16 @@ public class HelpCommand implements  ICommand {
 
         if (args.isEmpty()){
             StringBuilder builder = new StringBuilder();
+            EmbedBuilder builder2 = EmbedUtils.defaultEmbed()
+                    .setTitle("List of Commands");
+                    builder2.setColor(0xfdfcff);
 
             builder.append("List of commands\n");
             manager.getCommand().stream().map(ICommand::getName).forEach(
-                    (it) -> builder.append('`').append(Config.get("prefix")).append(it).append("`\n")
+                    (it) -> builder2.appendDescription("").appendDescription(Config.get("prefix")).appendDescription(it).appendDescription("\n")
             );
 
-            channel.sendMessage(builder.toString()).queue();
+            channel.sendMessage(builder2.build()).queue();
             return;
         }
 
@@ -56,6 +61,6 @@ public class HelpCommand implements  ICommand {
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("commands", "cmds", "commandlist");
+        return Arrays.asList("commands", "cmds", "commandlist","h");
     }
 }

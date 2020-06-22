@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 
@@ -40,16 +41,18 @@ public class PlayerManager {
         return musicManager;
     }
 
-    public void loadAndPlay(TextChannel channel, String trackUrl){
+    public void loadAndPlay(TextChannel channel, String trackUrl) {
         GuildMusicManager musicManager = getGuildMusicManager(channel.getGuild());
 
         playerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
             @Override
             public void trackLoaded(AudioTrack track) {
-                channel.sendMessage(track.getInfo().title + " has been added to queue");
+                EmbedBuilder builder = new EmbedBuilder();
+                builder.setColor(0x4600d1).setTitle("**__Adding to queue__**");
+                builder.setDescription(track.getInfo().title);
+                channel.sendMessage(builder.build()).queue();
 
                 play(musicManager, track);
-
             }
 
             @Override
@@ -65,30 +68,30 @@ public class PlayerManager {
                 play(musicManager, firstTrack);
 
                 playlist.getTracks().forEach(musicManager.scheduler::queue);
-
             }
 
             @Override
             public void noMatches() {
-                channel.sendMessage("Aint Shit here bro: " + trackUrl).queue();
-
+                channel.sendMessage("Nothing found by " + trackUrl).queue();
             }
 
             @Override
             public void loadFailed(FriendlyException exception) {
-                channel.sendMessage("Couldn't play: " + exception.getMessage()).queue();
+                channel.sendMessage("Could not play: " + exception.getMessage()).queue();
             }
         });
+
     }
 
-    private void play(GuildMusicManager musicManager, AudioTrack track){
+    private void play(GuildMusicManager musicManager, AudioTrack track) {
         musicManager.scheduler.queue(track);
     }
 
-    public static synchronized PlayerManager getINSTANCE() {
-        if (INSTANCE == null){
+    public static synchronized PlayerManager getInstance() {
+        if (INSTANCE == null) {
             INSTANCE = new PlayerManager();
         }
+
         return INSTANCE;
     }
 }

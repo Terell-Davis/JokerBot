@@ -13,7 +13,7 @@ public class SkipCommand implements ICommand {
         @Override
         public void handle(CommandContext ctx) {
             TextChannel channel = ctx.getChannel();
-            PlayerManager playerManager = PlayerManager.getINSTANCE();
+            PlayerManager playerManager = PlayerManager.getInstance();
             GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
             TrackScheduler scheduler = musicManager.scheduler;
             AudioPlayer player = musicManager.player;
@@ -23,7 +23,6 @@ public class SkipCommand implements ICommand {
 
                 return;
             }
-
             scheduler.nextTrack();
             channel.sendMessage("Skipping the current track").queue();
             NowPlayingCommand playing = new NowPlayingCommand();

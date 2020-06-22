@@ -2,11 +2,13 @@ package com.tyskyworks.kakorot.command.music;
 
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
+import me.duncte123.botcommons.messaging.EmbedUtils;
+import net.dv8tion.jda.api.EmbedBuilder;
 
 public class StopCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
-        PlayerManager playerManager = PlayerManager.getINSTANCE();
+        PlayerManager playerManager = PlayerManager.getInstance();
         GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
 
         LeaveCommand leave = new LeaveCommand();
@@ -14,8 +16,9 @@ public class StopCommand implements ICommand {
         musicManager.scheduler.getQueue().clear();
         musicManager.player.stopTrack();
         musicManager.player.setPaused(false);
-
-        ctx.getChannel().sendMessage("Stopping the player and clearing the queue").queue();
+        ctx.getChannel().sendMessage(EmbedUtils.embedMessage(String.format(
+                "🛑 Stopping song and Clearing the queue"
+        )).setColor(0xfdfcf).build()).queue();
     }
 
     @Override

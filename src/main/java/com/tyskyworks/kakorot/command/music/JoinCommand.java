@@ -31,12 +31,12 @@ public class JoinCommand implements ICommand {
         Member selfMember = ctx.getGuild().getSelfMember();
 
         if (!selfMember.hasPermission(voiceChannel, Permission.VOICE_CONNECT)){
-            channel.sendMessageFormat("I can't join %s hoe", voiceChannel).queue();
+            channel.sendMessageFormat("Insufficient Privileges for %s ... hoe.", voiceChannel).queue();
             return;
         }
 
         audioManager.openAudioConnection(voiceChannel);
-        channel.sendMessage("Joining......").queue();
+        channel.sendMessage("Sending Calling Card.").queue();
 
     }
 

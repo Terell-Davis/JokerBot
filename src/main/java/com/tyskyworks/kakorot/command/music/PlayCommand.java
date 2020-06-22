@@ -72,9 +72,12 @@ public class PlayCommand implements ICommand {
             join.handle(ctx);
         }
 
-        PlayerManager manager = PlayerManager.getINSTANCE();
+
+        PlayerManager manager = PlayerManager.getInstance();
 
         manager.loadAndPlay(ctx.getChannel(), input);
+
+        channel.sendMessage("Song Added");
     }
 
     private boolean isUrl(String input) {
@@ -121,5 +124,9 @@ public class PlayCommand implements ICommand {
     @Override
     public String getName() {
         return "play";
+    }
+
+    public List<String> getAliases() {
+        return Arrays.asList("p", "pl");
     }
 }

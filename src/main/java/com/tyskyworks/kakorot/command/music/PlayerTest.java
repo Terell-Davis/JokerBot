@@ -10,7 +10,7 @@ public class PlayerTest implements  ICommand {
 
     @Override
     public void handle(CommandContext ctx) {
-        PlayerManager manager = PlayerManager.getINSTANCE();
+        PlayerManager manager = PlayerManager.getInstance();
 
         manager.loadAndPlay(ctx.getChannel(), "https://youtu.be/b6QHGfphoXU");
 

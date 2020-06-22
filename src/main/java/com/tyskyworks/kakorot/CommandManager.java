@@ -26,6 +26,7 @@ public class CommandManager {
         addCommand(new SkipCommand());
         addCommand(new QueueCommand());
         addCommand(new NowPlayingCommand());
+        addCommand(new VolumeCommand());
     }
 
     // Dupe Command checker
