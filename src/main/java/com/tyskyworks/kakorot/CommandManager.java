@@ -29,6 +29,8 @@ public class CommandManager {
         addCommand(new VolumeCommand());
         addCommand(new CockandBall()); //added
         addCommand(new BassBoost());
+        addCommand(new WhoBass());
+        addCommand(new UnBassBoot());
     }
 
     // Dupe Command checker
