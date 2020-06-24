@@ -35,6 +35,6 @@ public class MemeCommand implements  ICommand{
 
     @Override
     public String getHelp() {
-        return "RNGs a Meme";
+        return "Posts a meme from /r Dankmemes";
     }
 }

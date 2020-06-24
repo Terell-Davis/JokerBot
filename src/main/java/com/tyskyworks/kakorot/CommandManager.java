@@ -27,6 +27,7 @@ public class CommandManager {
         addCommand(new QueueCommand());
         addCommand(new NowPlayingCommand());
         addCommand(new VolumeCommand());
+        addCommand(new CockandBall());
     }
 
     // Dupe Command checker
