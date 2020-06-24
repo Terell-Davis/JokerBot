@@ -43,9 +43,8 @@ public class PlayCommand implements ICommand {
 
     @Override
     public void handle(CommandContext ctx) {
-
         AudioManager audioManager = ctx.getGuild().getAudioManager();
-       final TextChannel channel = ctx.getChannel();
+        final TextChannel channel = ctx.getChannel();
 
         if ((ctx.getArgs().isEmpty())) {
             channel.sendMessage("Tis Bih Empty").queue();
