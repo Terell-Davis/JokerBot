@@ -24,7 +24,7 @@ public class UnBassBoot implements ICommand {
             // Success
             EmbedBuilder success = new EmbedBuilder();
             success.setColor(0x22ff2a);
-            success.setTitle("🔈 stop feeling the base 🔈");
+            success.setTitle("🔈 stop feeling the bass 🔈");
             ctx.getChannel().sendMessage(success.build()).queue();
         } catch (IllegalArgumentException e) {
             if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval")) {
