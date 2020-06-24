@@ -15,6 +15,11 @@ public class WhoBass implements ICommand {
         AudioManager audioManager = ctx.getGuild().getAudioManager();
         final TextChannel channel = ctx.getChannel();
 
+        if (!audioManager.isConnected()) {
+            JoinCommand join = new JoinCommand();
+            join.handle(ctx);
+        }
+
         manager.loadAndPlay(ctx.getChannel(), "https://www.youtube.com/watch?v=_pS5soRsrKQ");
         manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(900000);
         channel.sendMessage("MYSTERY INTENSIFIES!!!!!!!!");
