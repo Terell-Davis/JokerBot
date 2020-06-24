@@ -27,7 +27,8 @@ public class CommandManager {
         addCommand(new QueueCommand());
         addCommand(new NowPlayingCommand());
         addCommand(new VolumeCommand());
-        addCommand(new CockandBall());
+        addCommand(new CockandBall()); //added
+        addCommand(new BassBoost());
     }
 
     // Dupe Command checker
