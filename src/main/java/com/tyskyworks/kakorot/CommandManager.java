@@ -29,6 +29,7 @@ public class CommandManager {
         addCommand(new VolumeCommand());
         addCommand(new CockandBall()); //added
         addCommand(new BassBoost());
+        addCommand(new Ronaldinho());
         addCommand(new WhoBass());
         addCommand(new UnBassBoot());
     }
