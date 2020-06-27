@@ -13,7 +13,7 @@ public class MemeCommand implements  ICommand{
        final TextChannel channel = ctx.getChannel();
         WebUtils.ins.getJSONObject("https://apis.duncte123.me/meme").async((json) -> {
             if (!json.get("success").asBoolean()) {
-                channel.sendMessage("awwwww shit something messed up").queue();
+                channel.sendMessage("Something went wrong! Please try again.").queue();
                 System.out.println(json);
             }
             final JsonNode data = json.get("data");

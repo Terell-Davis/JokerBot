@@ -1,7 +1,9 @@
-package com.tyskyworks.kakorot.command.music;
+package com.tyskyworks.kakorot.command.jokecommands;
 
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
+import com.tyskyworks.kakorot.command.music.JoinCommand;
+import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 

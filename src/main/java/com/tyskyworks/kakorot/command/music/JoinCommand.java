@@ -23,7 +23,7 @@ public class JoinCommand implements ICommand {
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
 
         if (!memberVoiceState.inVoiceChannel()){
-            channel.sendMessage("Get in a Channel Bitch").queue();
+            channel.sendMessage("Please join a voice channel to use this command.").queue();
             return;
         }
 
@@ -31,12 +31,15 @@ public class JoinCommand implements ICommand {
         Member selfMember = ctx.getGuild().getSelfMember();
 
         if (!selfMember.hasPermission(voiceChannel, Permission.VOICE_CONNECT)){
-            channel.sendMessageFormat("Insufficient Privileges for %s ... hoe.", voiceChannel).queue();
+            channel.sendMessageFormat("Insufficient Privileges for %s.", voiceChannel).queue();
             return;
         }
 
-        audioManager.openAudioConnection(voiceChannel);
-        channel.sendMessage("Sending Calling Card.").queue();
+        if (memberVoiceState.inVoiceChannel()){
+            audioManager.openAudioConnection(voiceChannel);
+            channel.sendMessage("Sending Calling Card.").queue();
+        }
+
 
     }
 
@@ -47,6 +50,6 @@ public class JoinCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Bots Joins the Channel";
+        return "Bot joins voice channel";
     }
 }

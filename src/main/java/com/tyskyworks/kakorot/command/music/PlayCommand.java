@@ -4,11 +4,10 @@ import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchResult;
-import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
-import com.tyskyworks.kakorot.command.music.PlayerManager;
+import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
@@ -47,7 +46,7 @@ public class PlayCommand implements ICommand {
         final TextChannel channel = ctx.getChannel();
 
         if ((ctx.getArgs().isEmpty())) {
-            channel.sendMessage("Tis Bih Empty").queue();
+            channel.sendMessage("Please enter what you want to play").queue();
 
             return;
         }
@@ -76,7 +75,7 @@ public class PlayCommand implements ICommand {
 
         manager.loadAndPlay(ctx.getChannel(), input);
 
-        channel.sendMessage("Song Added");
+        channel.sendMessage("Song(s)" + " Added");
     }
 
     private boolean isUrl(String input) {
@@ -126,6 +125,6 @@ public class PlayCommand implements ICommand {
     }
 
     public List<String> getAliases() {
-        return Arrays.asList("p", "pl");
+        return Arrays.asList("p", "pl", "ply");
     }
 }

@@ -1,14 +1,16 @@
-package com.tyskyworks.kakorot.command.music;
+package com.tyskyworks.kakorot.command.jokecommands;
 
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
+import com.tyskyworks.kakorot.command.music.JoinCommand;
+import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class WhoBass implements ICommand {
+public class WhoIsThereBass implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         PlayerManager manager = PlayerManager.getInstance();
@@ -38,6 +40,6 @@ public class WhoBass implements ICommand {
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("wb", "who", "mystery");
+        return Arrays.asList("wb", "who", "mystery","whobass");
     }
 }

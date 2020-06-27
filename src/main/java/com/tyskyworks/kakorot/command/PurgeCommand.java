@@ -36,7 +36,7 @@ public class PurgeCommand implements ICommand{
                     // Success
                     EmbedBuilder success = new EmbedBuilder();
                     success.setColor(0x22ff2a);
-                    success.setTitle("👌 " + args[1] + " Messages Deleted.");
+                    success.setTitle("⚠ " + args[1] + " Messages Deleted.");
                     ctx.getChannel().sendMessage(success.build()).queue();
 
                 } catch (IllegalArgumentException e) {

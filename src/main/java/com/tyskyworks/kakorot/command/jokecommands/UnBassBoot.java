@@ -1,7 +1,9 @@
-package com.tyskyworks.kakorot.command.music;
+package com.tyskyworks.kakorot.command.jokecommands;
 
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
+import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
+import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
@@ -9,7 +11,7 @@ import net.dv8tion.jda.api.managers.AudioManager;
 import java.util.Arrays;
 import java.util.List;
 
-public class BassBoost implements ICommand {
+public class UnBassBoot implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
@@ -20,11 +22,11 @@ public class BassBoost implements ICommand {
         if (ctx.getAuthor().isBot()) return;
 
         try {
-            music.player.setVolume(9000000);
+            music.player.setVolume(50);
             // Success
             EmbedBuilder success = new EmbedBuilder();
             success.setColor(0x22ff2a);
-            success.setTitle("🔊 FEEL THE BASS! 🔊");
+            success.setTitle("🔈 stop feeling the bass 🔈");
             ctx.getChannel().sendMessage(success.build()).queue();
         } catch (IllegalArgumentException e) {
             if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval")) {
@@ -44,16 +46,16 @@ public class BassBoost implements ICommand {
 
     @Override
     public String getName() {
-        return "BassBoot";
+        return "UnBass";
     }
 
     @Override
     public String getHelp() {
-        return "Feel the bass";
+        return "Don't Feel the bass";
     }
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("bb", "bass", "loud");
+        return Arrays.asList("ub", "soft", "shutup");
     }
 }

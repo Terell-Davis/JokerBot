@@ -19,7 +19,7 @@ public class LeaveCommand implements ICommand {
         VoiceChannel voiceChannel = audioManager.getConnectedChannel();
 
         if (!voiceChannel.getMembers().contains(ctx.getMember())) {
-            channel.sendMessage("You have to be in the same voice channel as me to use this").queue();
+            channel.sendMessage("You have to be in the same voice channel as me to use this command").queue();
             return;
         }
 
@@ -35,6 +35,6 @@ public class LeaveCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Bot will leave the channel";
+        return "Bot leaves the voice channel";
     }
 }

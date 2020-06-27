@@ -5,6 +5,8 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
+import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
+import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -25,7 +27,7 @@ public class QueueCommand implements ICommand {
         AudioPlayer player = musicManager.player;
 
         if (queue.isEmpty()) {
-            channel.sendMessage("There is nothing to show").queue();
+            channel.sendMessage("There is nothing here but me and my thoughts").queue();
 
             return;
         }
@@ -39,9 +41,9 @@ public class QueueCommand implements ICommand {
             AudioTrack track = tracks.get(i);
             AudioTrackInfo info = track.getInfo();
 
-            builder.setColor(0xfdfcf);
+            builder.setColor(0xf51707);
             builder.appendDescription(String.format(
-                    "%s - %s 🥞 [%s] 🥞\n",
+                    (i+1) +  ". %s - %s [%s] 🥞\n",
                     info.title,
                     info.author,
                     formatTime(player.getPlayingTrack().getDuration())

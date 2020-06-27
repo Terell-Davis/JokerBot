@@ -27,7 +27,7 @@ public class HelpCommand implements  ICommand {
             StringBuilder builder = new StringBuilder();
             EmbedBuilder builder2 = EmbedUtils.defaultEmbed()
                     .setTitle("List of Commands");
-                    builder2.setColor(0xfdfcff);
+                    builder2.setColor(0xfa0021);
 
             builder.append("List of commands\n");
             manager.getCommand().stream().map(ICommand::getName).forEach(

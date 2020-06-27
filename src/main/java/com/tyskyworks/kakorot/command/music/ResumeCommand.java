@@ -2,6 +2,7 @@ package com.tyskyworks.kakorot.command.music;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
+import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
 import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
@@ -13,22 +14,23 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class NowPlayingCommand implements ICommand {
+public class ResumeCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
-        TextChannel channel = ctx.getChannel();
         PlayerManager playerManager = PlayerManager.getInstance();
         GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
+        TextChannel channel = ctx.getChannel();
         AudioPlayer player = musicManager.player;
 
-        if (player.getPlayingTrack() == null) {
-            channel.sendMessage("The player is not playing any song.").queue();
 
+        if (player.getPlayingTrack() == null) {
+            channel.sendMessage("The player isn't playing anything").queue();
             return;
         }
 
-        AudioTrackInfo info = player.getPlayingTrack().getInfo();
+        musicManager.player.setPaused(false);
 
+        AudioTrackInfo info = player.getPlayingTrack().getInfo();
         channel.sendMessage(EmbedUtils.embedMessage(String.format(
                 "**__Now Playing:__** [%s](%s)\n%s %s - %s %s",
                 info.title,
@@ -39,21 +41,6 @@ public class NowPlayingCommand implements ICommand {
         )).setColor(0xf51707).build()).queue();
     }
 
-    @Override
-    public String getHelp() {
-        return "Shows the currently playing track";
-    }
-
-    @Override
-    public List<String> getAliases() {
-        return Arrays.asList("Nowp", "nowplaying", "playing","np");
-    }
-
-    @Override
-    public String getName() {
-        return "NowPlaying";
-    }
-
     private String formatTime(long timeInMillis) {
         final long hours = timeInMillis / TimeUnit.HOURS.toMillis(1);
         final long minutes = timeInMillis / TimeUnit.MINUTES.toMillis(1);
@@ -61,5 +48,19 @@ public class NowPlayingCommand implements ICommand {
 
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
-}
 
+    @Override
+    public String getName() {
+        return "resume";
+    }
+
+    @Override
+    public String getHelp() {
+        return "Plays currently paused song";
+    }
+
+    @Override
+    public List<String> getAliases() {
+        return Arrays.asList("start", "up", "unpause");
+    }
+}

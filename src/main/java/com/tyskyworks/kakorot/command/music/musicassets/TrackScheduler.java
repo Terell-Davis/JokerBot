@@ -1,4 +1,4 @@
-package com.tyskyworks.kakorot.command.music;
+package com.tyskyworks.kakorot.command.music.musicassets;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
@@ -57,7 +57,6 @@ public class TrackScheduler extends AudioEventAdapter {
         // Start the next track, regardless of if something is already playing or not. In case queue was empty, we are
         // giving null to startTrack, which is a valid argument and will simply stop the player.
         player.startTrack(queue.poll(), false);
-        player.getPlayingTrack().getInfo();
     }
 
     public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason) {

@@ -1,6 +1,7 @@
 package com.tyskyworks.kakorot;
 
 import com.tyskyworks.kakorot.command.*;
+import com.tyskyworks.kakorot.command.jokecommands.*;
 import com.tyskyworks.kakorot.command.music.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -14,24 +15,24 @@ public class CommandManager {
     private final List<ICommand> commands = new ArrayList<>();
 
     public CommandManager() {
-        addCommand(new PingCommand());
-        addCommand(new HelpCommand(this));
+        addCommand(new PingCommand()); addCommand(new HelpCommand(this));
         addCommand(new PurgeCommand());
-        addCommand(new MemeCommand());
+
         addCommand(new WebhookCommand());
-        addCommand(new JoinCommand());
-        addCommand(new LeaveCommand());
-        addCommand(new PlayCommand());
-        addCommand(new StopCommand());
-        addCommand(new SkipCommand());
-        addCommand(new QueueCommand());
-        addCommand(new NowPlayingCommand());
-        addCommand(new VolumeCommand());
-        addCommand(new CockandBall()); //added
-        addCommand(new BassBoost());
-        addCommand(new Ronaldinho());
-        addCommand(new WhoBass());
-        addCommand(new UnBassBoot());
+
+        addCommand(new JoinCommand()); addCommand(new LeaveCommand());
+
+        addCommand(new PlayCommand()); addCommand(new EndCommand()); addCommand(new SkipCommand());
+        addCommand(new NowPlayingCommand()); addCommand(new QueueCommand());  addCommand(new VolumeCommand());
+
+      //Joke Commands
+        addCommand(new CockandBall()); addCommand(new BassBoost()); addCommand(new UnBassBoot());
+        addCommand(new Ronaldinho()); addCommand(new WhoIsThereBass()); addCommand(new MemeCommand());
+
+       //New Commands
+        addCommand(new PauseCommand());
+        addCommand(new ResumeCommand());
+        addCommand(new SendCallingCard());
     }
 
     // Dupe Command checker

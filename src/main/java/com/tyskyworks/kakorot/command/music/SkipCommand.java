@@ -3,8 +3,10 @@ package com.tyskyworks.kakorot.command.music;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
+import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
+import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
+import com.tyskyworks.kakorot.command.music.musicassets.TrackScheduler;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,12 +21,11 @@ public class SkipCommand implements ICommand {
             AudioPlayer player = musicManager.player;
 
             if (player.getPlayingTrack() == null) {
-                channel.sendMessage("The player isn't playing aything").queue();
-
+                channel.sendMessage("The player isn't playing anything").queue();
                 return;
             }
             scheduler.nextTrack();
-            channel.sendMessage("Skipping the current track").queue();
+            channel.sendMessage("Skipping current track").queue();
             NowPlayingCommand playing = new NowPlayingCommand();
             playing.handle(ctx);
 

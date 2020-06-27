@@ -1,4 +1,4 @@
-package com.tyskyworks.kakorot.command.music;
+package com.tyskyworks.kakorot.command.music.musicassets;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
