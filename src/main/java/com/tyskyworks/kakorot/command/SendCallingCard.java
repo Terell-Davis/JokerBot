@@ -58,7 +58,7 @@ public class SendCallingCard implements ICommand{
                     EmbedBuilder Card = new EmbedBuilder();
                     Card.setColor(0xf51707);
                     Card.setDescription(messages[number].replace("[member]", args[1]));
-                    ctx.getGuild().getDefaultChannel().sendMessage(Card.build()).queue();
+                    channel.sendMessage(Card.build()).queue();
 
                     if (memberVoiceState.inVoiceChannel()){
                         audioManager.openAudioConnection(voiceChannel);
