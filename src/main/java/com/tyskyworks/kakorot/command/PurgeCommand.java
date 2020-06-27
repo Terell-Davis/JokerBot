@@ -7,9 +7,10 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class ClearCommand implements ICommand{
+public class PurgeCommand implements ICommand{
 
     @Override
     public void handle(CommandContext ctx) {
@@ -62,11 +63,15 @@ public class ClearCommand implements ICommand{
 
     @Override
     public String getName() {
-        return "clear";
+        return "purge";
     }
 
     @Override
     public String getHelp() {
         return "Usage: `" + Config.get("prefix") + "clear [# of messages]`";
+    }
+
+    public List<String> getAliases() {
+        return Arrays.asList("clear", "clr");
     }
 }

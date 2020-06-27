@@ -38,6 +38,6 @@ public class Ronaldinho implements ICommand {
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("rs64", "soccer", "ra");
+        return Arrays.asList("rs64", "soccer", "ra", "ha");
     }
 }

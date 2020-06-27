@@ -69,6 +69,6 @@ public class VolumeCommand implements ICommand {
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("vol", "sound");
+        return Arrays.asList("vol", "sound", "v");
     }
 }

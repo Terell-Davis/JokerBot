@@ -16,7 +16,7 @@ public class CommandManager {
     public CommandManager() {
         addCommand(new PingCommand());
         addCommand(new HelpCommand(this));
-        addCommand(new ClearCommand());
+        addCommand(new PurgeCommand());
         addCommand(new MemeCommand());
         addCommand(new WebhookCommand());
         addCommand(new JoinCommand());
