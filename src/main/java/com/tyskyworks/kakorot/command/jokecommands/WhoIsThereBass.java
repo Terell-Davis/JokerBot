@@ -23,7 +23,7 @@ public class WhoIsThereBass implements ICommand {
         }
 
         manager.loadAndPlay(ctx.getChannel(), "https://www.youtube.com/watch?v=_pS5soRsrKQ");
-        manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(900000);
+        manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(2147483647);
         channel.sendMessage("MYSTERY INTENSIFIES!!!!!!!!");
 
     }

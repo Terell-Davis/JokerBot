@@ -60,7 +60,7 @@ public class PauseCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Pauses Current Song (Run `" + Config.get("prefix") +"resume` to resume song)";
+        return "Pauses Current Song (Run `" + Config.get("prefix") +"resume` or `" + Config.get("prefix") + "ply` to resume song)";
     }
 
     @Override

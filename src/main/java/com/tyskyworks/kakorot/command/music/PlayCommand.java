@@ -74,6 +74,7 @@ public class PlayCommand implements ICommand {
         PlayerManager manager = PlayerManager.getInstance();
 
         manager.loadAndPlay(ctx.getChannel(), input);
+        manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(100);
 
         channel.sendMessage("Song(s)" + " Added");
     }
@@ -125,6 +126,6 @@ public class PlayCommand implements ICommand {
     }
 
     public List<String> getAliases() {
-        return Arrays.asList("p", "pl", "ply");
+        return Arrays.asList("p", "pl");
     }
 }

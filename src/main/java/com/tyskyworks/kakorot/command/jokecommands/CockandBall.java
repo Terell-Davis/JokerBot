@@ -19,7 +19,7 @@ public class CockandBall implements ICommand {
             final String text = json.get("extract").asText();
 
 
-            final EmbedBuilder embed = EmbedUtils.embedMessageWithTitle(name, text + " 🍆👌").setColor(0xbf0208);
+            final EmbedBuilder embed = EmbedUtils.embedMessageWithTitle(name, text + " 🍆").setColor(0xbf0208);
 
             channel.sendMessage(embed.build()).queue();
         });

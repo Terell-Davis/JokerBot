@@ -22,7 +22,7 @@ public class BassBoost implements ICommand {
         if (ctx.getAuthor().isBot()) return;
 
         try {
-            music.player.setVolume(9000000);
+            music.player.setVolume(2147483647);
             // Success
             EmbedBuilder success = new EmbedBuilder();
             success.setColor(0x22ff2a);

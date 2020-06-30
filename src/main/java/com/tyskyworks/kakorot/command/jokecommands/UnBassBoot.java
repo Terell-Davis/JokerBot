@@ -22,7 +22,7 @@ public class UnBassBoot implements ICommand {
         if (ctx.getAuthor().isBot()) return;
 
         try {
-            music.player.setVolume(50);
+            music.player.setVolume(100);
             // Success
             EmbedBuilder success = new EmbedBuilder();
             success.setColor(0x22ff2a);
