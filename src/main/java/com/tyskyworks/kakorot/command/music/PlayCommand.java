@@ -44,6 +44,13 @@ public class PlayCommand implements ICommand {
     public void handle(CommandContext ctx) {
         AudioManager audioManager = ctx.getGuild().getAudioManager();
         final TextChannel channel = ctx.getChannel();
+        PlayerManager manager = PlayerManager.getInstance();
+
+        if(manager.getGuildMusicManager(ctx.getGuild()).player.isPaused()){
+            manager.getGuildMusicManager(ctx.getGuild()).player.setPaused(false);
+
+            return;
+        }
 
         if ((ctx.getArgs().isEmpty())) {
             channel.sendMessage("Please enter what you want to play").queue();
@@ -70,13 +77,10 @@ public class PlayCommand implements ICommand {
             join.handle(ctx);
         }
 
-
-        PlayerManager manager = PlayerManager.getInstance();
-
-        manager.loadAndPlay(ctx.getChannel(), input);
-        manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(100);
-
-        channel.sendMessage("Song(s)" + " Added");
+            manager.loadAndPlay(ctx.getChannel(), input);
+            manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(100);
+            //turn into embed later
+            channel.sendMessage("Song(s)" + " Added");
     }
 
     private boolean isUrl(String input) {

@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class QuoteCommand implements ICommand {
@@ -35,13 +36,13 @@ public class QuoteCommand implements ICommand {
         final Member target = message.getMentionedMembers().get(0);
 
         if (args.size() < 2 || message.getMentionedMembers().isEmpty()) {
-            channel.sendMessage("Missing arguments; `j-quote [member] <message>").queue();
+            channel.sendMessage("Missing arguments; `j-quote [member] <message>`").queue();
             return;
         }
-        if (!member.canInteract(target) || !member.hasPermission(Permission.MESSAGE_WRITE)) {
-            channel.sendMessage("You are missing permission to kick this member").queue();
-            return;
-        }
+        //if (!member.canInteract(target) || !member.hasPermission(Permission.MESSAGE_WRITE)) {
+        //    channel.sendMessage("You do not have permission for this command!").queue();
+         //   return;
+       // }
 
 
         final User user = ctx.getAuthor();
@@ -63,11 +64,11 @@ public class QuoteCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Quotes.....[Warning this command works across servers and will only post to Ghost & Goblins Quote Channel]";
+        return "Usage: `j-quote [member] <message>`  [Warning this command works across servers and will only post to Ghost & Goblins Quote Channel]";
     }
 
     @Override
     public List<String> getAliases() {
-        return null;
+        return Arrays.asList("qt", "qot");
     }
 }
