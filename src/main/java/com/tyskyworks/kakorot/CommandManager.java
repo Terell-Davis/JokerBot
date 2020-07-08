@@ -18,21 +18,21 @@ public class CommandManager {
         addCommand(new PingCommand()); addCommand(new HelpCommand(this));
         addCommand(new PurgeCommand());
 
-        addCommand(new WebhookCommand());
-
         addCommand(new JoinCommand()); addCommand(new LeaveCommand());
 
         addCommand(new PlayCommand()); addCommand(new EndCommand()); addCommand(new SkipCommand());
         addCommand(new NowPlayingCommand()); addCommand(new QueueCommand());  addCommand(new VolumeCommand());
+        addCommand(new PauseCommand()); addCommand(new ResumeCommand());
 
       //Joke Commands
         addCommand(new CockandBall()); addCommand(new BassBoost()); addCommand(new UnBassBoot());
         addCommand(new Ronaldinho()); addCommand(new WhoIsThereBass()); addCommand(new MemeCommand());
+        addCommand(new SendCallingCard());
 
        //New Commands
-        addCommand(new PauseCommand());
-        addCommand(new ResumeCommand());
-        addCommand(new SendCallingCard());
+        addCommand(new QuoteCommand());
+
+
     }
 
     // Dupe Command checker

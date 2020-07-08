@@ -25,7 +25,7 @@ public class JokerBot {
 
         api.addEventListener(new ReadyListener());
         api.getPresence().setStatus(OnlineStatus.ONLINE);
-        api.getPresence().setActivity(Activity.playing("Persona 4 Golden [j-]"));
+        api.getPresence().setActivity(Activity.playing("Persona 4 Golden j-h"));
 
     }
 }
