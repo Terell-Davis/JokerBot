@@ -78,7 +78,7 @@ public class PlayCommand implements ICommand {
         }
 
             manager.loadAndPlay(ctx.getChannel(), input);
-            manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(100);
+            manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(75);
             //turn into embed later
             channel.sendMessage("Song(s)" + " Added");
     }

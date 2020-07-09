@@ -5,6 +5,8 @@ import com.tyskyworks.kakorot.command.ICommand;
 import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
 import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
@@ -18,8 +20,14 @@ public class BassBoost implements ICommand {
         AudioManager audioManager = ctx.getGuild().getAudioManager();
         PlayerManager manager = PlayerManager.getInstance();
         GuildMusicManager music = manager.getGuildMusicManager(ctx.getGuild());
+        final Member member = ctx.getMember();
 
         if (ctx.getAuthor().isBot()) return;
+
+        if (!member.hasPermission(Permission.ADMINISTRATOR)) {
+            channel.sendMessage("You are missing permission to hurt others ears").queue();
+            return;
+        }
 
         try {
             music.player.setVolume(2147483647);

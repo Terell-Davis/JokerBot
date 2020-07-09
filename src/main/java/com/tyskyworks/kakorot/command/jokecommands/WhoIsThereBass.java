@@ -4,6 +4,8 @@ import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
 import com.tyskyworks.kakorot.command.music.JoinCommand;
 import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
@@ -16,6 +18,12 @@ public class WhoIsThereBass implements ICommand {
         PlayerManager manager = PlayerManager.getInstance();
         AudioManager audioManager = ctx.getGuild().getAudioManager();
         final TextChannel channel = ctx.getChannel();
+        final Member member = ctx.getMember();
+
+        if (!member.hasPermission(Permission.ADMINISTRATOR)) {
+            channel.sendMessage("You are missing permission to hurt others").queue();
+            return;
+        }
 
         if (!audioManager.isConnected()) {
             JoinCommand join = new JoinCommand();

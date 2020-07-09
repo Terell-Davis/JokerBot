@@ -39,10 +39,11 @@ public class QuoteCommand implements ICommand {
             channel.sendMessage("Missing arguments; `j-quote [member] <message>`").queue();
             return;
         }
-        //if (!member.canInteract(target) || !member.hasPermission(Permission.MESSAGE_WRITE)) {
-        //    channel.sendMessage("You do not have permission for this command!").queue();
-         //   return;
-       // }
+
+        if (!member.canInteract(target) || !member.hasPermission(Permission.KICK_MEMBERS)) {
+            channel.sendMessage("You do not have permission for this command!").queue();
+            return;
+        }
 
 
         final User user = ctx.getAuthor();
