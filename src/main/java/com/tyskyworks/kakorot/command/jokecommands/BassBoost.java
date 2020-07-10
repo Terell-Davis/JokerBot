@@ -24,10 +24,10 @@ public class BassBoost implements ICommand {
 
         if (ctx.getAuthor().isBot()) return;
 
-        if (!member.hasPermission(Permission.ADMINISTRATOR)) {
-            channel.sendMessage("You are missing permission to hurt others ears").queue();
-            return;
-        }
+       // if (!member.hasPermission(Permission.)) {
+          //  channel.sendMessage("You are missing permission to hurt others ears").queue();
+          ////  return;
+        //}
 
         try {
             music.player.setVolume(2147483647);

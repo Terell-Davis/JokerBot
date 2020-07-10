@@ -20,10 +20,10 @@ public class WhoIsThereBass implements ICommand {
         final TextChannel channel = ctx.getChannel();
         final Member member = ctx.getMember();
 
-        if (!member.hasPermission(Permission.ADMINISTRATOR)) {
-            channel.sendMessage("You are missing permission to hurt others").queue();
-            return;
-        }
+        //if (!member.hasPermission(Permission.ADMINISTRATOR)) {
+        //    channel.sendMessage("You are missing permission to hurt others").queue();
+         //   return;
+       // }
 
         if (!audioManager.isConnected()) {
             JoinCommand join = new JoinCommand();
