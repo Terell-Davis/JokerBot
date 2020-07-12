@@ -22,8 +22,37 @@ public class BuildPlaylist implements ICommand {
         AudioManager audioManager = ctx.getGuild().getAudioManager();
 
         String[] args = ctx.getMessage().getContentRaw().split("\\s+");
+// Test Code from filter listener
 
-        List<Message> messages = ctx.getChannel().getHistory().retrievePast(100).complete();
+
+        String[] LIST_OF_BAD_WORDS = {"anal", "anus", "arse", "ass", "motherfucker", "balls", "bastard", "bitch", "blowjob", "blow job", "buttplug","cock","coon","cunt","dildo","fag","dyke","fuck","fucking","nigger","Goddamn","jizz","nigga","pussy","shit","whore"};
+
+        String[] message = ctx.getMessage().getContentRaw().split(" ");
+
+        for(int i = 0;i < message.length;i++){
+
+            boolean badWord = false;
+
+            //Check each message for each bad word
+
+            for(int b = 0; b < LIST_OF_BAD_WORDS.length;b++){
+
+                if (message[i].equalsIgnoreCase(LIST_OF_BAD_WORDS[b])){
+
+                    ctx.getMessage().delete().queue();
+
+                    badWord = true;
+
+                    if(message != message){ //Prints a message saying watch your language IF enabled by $filtermessage
+
+                        ctx.getChannel().sendMessage("Watch yo vernacular " + ctx.getMember().getUser().getName()).queue();
+
+                    }
+
+                }
+
+            }}
+        List<Message> messages = ctx.getChannel().getHistory().retrievePast(50).complete();
 
         StringBuilder sb = new StringBuilder();
 

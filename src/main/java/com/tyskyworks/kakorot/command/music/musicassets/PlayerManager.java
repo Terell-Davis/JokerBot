@@ -60,14 +60,24 @@ public class PlayerManager {
                 AudioTrack firstTrack = playlist.getSelectedTrack();
 
                 if (firstTrack == null) {
-                    firstTrack = playlist.getTracks().remove(0);
+                    firstTrack = playlist.getTracks().get(0);
                 }
 
-                channel.sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
+                EmbedBuilder builder = new EmbedBuilder();
+                builder.setColor(0xf51707).setTitle("**__Adding to queue__**");
+                builder.setDescription(firstTrack.getInfo().title + " (First track of playlist " + playlist.getName() + ")");
+                channel.sendMessage(builder.build()).queue();
+               // channel.sendMessage("Adding to queue " + firstTrack.getInfo().title + " (first track of playlist " + playlist.getName() + ")").queue();
 
                 play(musicManager, firstTrack);
 
-                playlist.getTracks().forEach(musicManager.scheduler::queue);
+                for(AudioTrack track : playlist.getTracks()){
+                    if (track != playlist.getSelectedTrack()){
+                        musicManager.scheduler.addToQueue(track);
+                    }
+                }
+
+                //playlist.getTracks().forEach(musicManager.scheduler::queue);
             }
 
             @Override

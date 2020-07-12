@@ -20,10 +20,12 @@ public class SkipCommand implements ICommand {
             TrackScheduler scheduler = musicManager.scheduler;
             AudioPlayer player = musicManager.player;
 
+
             if (player.getPlayingTrack() == null) {
                 channel.sendMessage("The player isn't playing anything").queue();
                 return;
             }
+
             scheduler.nextTrack();
             channel.sendMessage("Skipping current track").queue();
             NowPlayingCommand playing = new NowPlayingCommand();

@@ -27,10 +27,13 @@ public class CommandManager {
       //Joke Commands
         addCommand(new CockandBall()); addCommand(new BassBoost()); addCommand(new UnBassBoot());
         addCommand(new Ronaldinho()); addCommand(new WhoIsThereBass()); addCommand(new MemeCommand());
-        addCommand(new SendCallingCard());
+        addCommand(new SendCallingCard()); addCommand(new QuoteCommand());
 
        //New Commands
-        addCommand(new QuoteCommand());
+        addCommand(new ClearQueueCommand());
+
+        //Work in Progress
+        //addCommand(new BuildPlaylist());
 
 
     }
