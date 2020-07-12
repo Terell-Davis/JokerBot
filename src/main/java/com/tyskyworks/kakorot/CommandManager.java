@@ -32,7 +32,7 @@ public class CommandManager {
        //New Commands
         addCommand(new ClearQueueCommand());
 
-        //Work in Progress
+        //Work in Progress Commands
         //addCommand(new BuildPlaylist());
 
 
