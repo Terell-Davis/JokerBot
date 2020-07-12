@@ -30,7 +30,7 @@ public class CommandManager {
         addCommand(new SendCallingCard()); addCommand(new QuoteCommand());
 
        //New Commands
-        addCommand(new ClearQueueCommand());
+        addCommand(new DeleteTrackCommand());
 
         //Work in Progress Commands
         //addCommand(new BuildPlaylist());

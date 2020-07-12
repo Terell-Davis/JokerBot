@@ -14,7 +14,7 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public class ClearQueueCommand implements ICommand {
+public class DeleteTrackCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getChannel();
