@@ -15,22 +15,26 @@ public class CommandManager {
     private final List<ICommand> commands = new ArrayList<>();
 
     public CommandManager() {
-        addCommand(new PingCommand()); addCommand(new HelpCommand(this));
-        addCommand(new PurgeCommand());
+        addCommand(new HelpCommand(this)); addCommand(new PurgeCommand());
+        addCommand(new PingCommand()); addCommand(new InspireCommand());
 
         addCommand(new JoinCommand()); addCommand(new LeaveCommand());
-
         addCommand(new PlayCommand()); addCommand(new EndCommand()); addCommand(new SkipCommand());
         addCommand(new NowPlayingCommand()); addCommand(new QueueCommand());  addCommand(new VolumeCommand());
         addCommand(new PauseCommand()); addCommand(new ResumeCommand());
 
-      //Joke Commands
+        //Joke Commands
         addCommand(new CockandBall()); addCommand(new BassBoost()); addCommand(new UnBassBoot());
-        addCommand(new Ronaldinho()); addCommand(new WhoIsThereBass()); addCommand(new MemeCommand());
         addCommand(new SendCallingCard()); addCommand(new QuoteCommand());
 
-       //New Commands
+        //New Commands
         addCommand(new DeleteTrackCommand());
+
+        //Removed Commands
+        //addCommand(new MemeCommand());
+        //addCommand(new Ronaldinho());addCommand(new WhoIsThereBass());
+        //
+        //
 
         //Work in Progress Commands
 
