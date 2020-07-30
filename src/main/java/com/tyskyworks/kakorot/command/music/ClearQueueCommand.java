@@ -1,6 +1,5 @@
 package com.tyskyworks.kakorot.command.music;
 
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.tyskyworks.kakorot.Config;
@@ -13,7 +12,6 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
@@ -39,9 +37,13 @@ public class ClearQueueCommand implements ICommand {
                 ctx.getChannel().sendMessage(usage.build()).queue();
             } else {
                 List<AudioTrack> tracks = new ArrayList<>(queue);
-                AudioTrack track = tracks.get(Integer.parseInt(args[1]));
-                tracks.remove(track);
+                AudioTrack track = tracks.get(Integer.parseInt(args[1]) - 1);
                 AudioTrackInfo info = track.getInfo();
+                List<AudioTrack> list = new ArrayList<>();
+                musicManager.scheduler.getQueue().drainTo(list);
+                list.remove(Integer.parseInt(args[1]) - 1);
+                musicManager.scheduler.getQueue().addAll(list);
+
 
                 channel.sendMessage(EmbedUtils.embedMessage(String.format(
                         "**__Removed:__** [%s](%s)",
@@ -60,10 +62,5 @@ public class ClearQueueCommand implements ICommand {
     @Override
     public String getHelp() {
         return "Usage: `" + Config.get("prefix") + "clear [Track #]`";
-    }
-
-    @Override
-    public List<String> getAliases() {
-        return Arrays.asList("clearq");
     }
 }
