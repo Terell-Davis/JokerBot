@@ -1,6 +1,5 @@
 package com.tyskyworks.kakorot.command.music;
 
-import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.tyskyworks.kakorot.command.CommandContext;
@@ -24,28 +23,26 @@ public class QueueCommand implements ICommand {
         PlayerManager playerManager = PlayerManager.getInstance();
         GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
         BlockingQueue<AudioTrack> queue = musicManager.scheduler.getQueue();
-        AudioPlayer player = musicManager.player;
 
         if (queue.isEmpty()) {
             channel.sendMessage("There is nothing here but me and my thoughts").queue();
-
             return;
         }
 
-        int trackCount = Math.min(queue.size(), 1500);
+        int trackCount = Math.min(queue.size(), 2000);
         List<AudioTrack> tracks = new ArrayList<>(queue);
         EmbedBuilder builder = EmbedUtils.defaultEmbed()
                 .setTitle("Current Queue (Total: " + queue.size() + ")");
-        if (trackCount > 25){
-            for (int i = 0; i < 20; i++) {
+        if (trackCount > 30){
+            for (int i = 0; i < 25; i++) {
                 AudioTrack track = tracks.get(i);
                 AudioTrackInfo info = track.getInfo();
 
                 builder.setColor(0xf51707);
                 builder.appendDescription(String.format(
-                        (i + 1) + ". %s - %s [%s] 🥞\n",
+                        (i + 1) + ". %s - [%s] 🥞\n", //(i + 1) + ". %s - %s [%s] 🥞\n",
                         info.title,
-                        info.author,
+                        //info.author,
                         formatTime(track.getDuration())
                 ));
             }

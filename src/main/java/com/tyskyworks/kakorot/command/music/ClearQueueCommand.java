@@ -2,26 +2,28 @@ package com.tyskyworks.kakorot.command.music;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
 import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
 import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
+import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-public class DeleteTrackCommand implements ICommand {
+public class ClearQueueCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getChannel();
         PlayerManager playerManager = PlayerManager.getInstance();
         GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
         BlockingQueue<AudioTrack> queue = musicManager.scheduler.getQueue();
-        AudioPlayer player = musicManager.player;
 
         if (ctx.getAuthor().isBot()) return;
 
@@ -33,8 +35,19 @@ public class DeleteTrackCommand implements ICommand {
                 EmbedBuilder usage = new EmbedBuilder();
                 usage.setColor(0xf51707);
                 usage.setTitle("Clearing entire queue!");
-               // usage.setDescription("Usage: `" + Config.get("prefix") + "clear [Track #`");
+               // usage.setDescription("Usage: `" + Config.get("prefix") + "clear [Track #]`");
                 ctx.getChannel().sendMessage(usage.build()).queue();
+            } else {
+                List<AudioTrack> tracks = new ArrayList<>(queue);
+                AudioTrack track = tracks.get(Integer.parseInt(args[1]));
+                tracks.remove(track);
+                AudioTrackInfo info = track.getInfo();
+
+                channel.sendMessage(EmbedUtils.embedMessage(String.format(
+                        "**__Removed:__** [%s](%s)",
+                        info.title,
+                        info.uri
+                )).setColor(0xf51707).build()).queue();
             }
         }
     }
@@ -46,11 +59,11 @@ public class DeleteTrackCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Usage: `" + Config.get("prefix") + "clear [Track #`";
+        return "Usage: `" + Config.get("prefix") + "clear [Track #]`";
     }
 
     @Override
     public List<String> getAliases() {
-        return null;
+        return Arrays.asList("clearq");
     }
 }

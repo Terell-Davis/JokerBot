@@ -3,6 +3,8 @@ package com.tyskyworks.kakorot;
 import com.tyskyworks.kakorot.command.*;
 import com.tyskyworks.kakorot.command.jokecommands.*;
 import com.tyskyworks.kakorot.command.music.*;
+import com.tyskyworks.kakorot.command.music.ShuffleCommand;
+import com.tyskyworks.kakorot.command.removed.PingCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
@@ -15,29 +17,28 @@ public class CommandManager {
     private final List<ICommand> commands = new ArrayList<>();
 
     public CommandManager() {
+        //Base Commands
         addCommand(new HelpCommand(this)); addCommand(new PurgeCommand());
-        addCommand(new PingCommand()); addCommand(new InspireCommand());
+        addCommand(new PingCommand());  addCommand(new ClearQueueCommand());
 
-        addCommand(new JoinCommand()); addCommand(new LeaveCommand());
+        //Music
         addCommand(new PlayCommand()); addCommand(new EndCommand()); addCommand(new SkipCommand());
         addCommand(new NowPlayingCommand()); addCommand(new QueueCommand());  addCommand(new VolumeCommand());
-        addCommand(new PauseCommand()); addCommand(new ResumeCommand());
+        addCommand(new PauseCommand()); addCommand(new ResumeCommand()); addCommand(new ShuffleCommand());
 
-        //Joke Commands
-        addCommand(new CockandBall()); addCommand(new BassBoost()); addCommand(new UnBassBoot());
-        addCommand(new SendCallingCard()); addCommand(new QuoteCommand());
+        //Joker Commands
+        addCommand(new BassBoost()); addCommand(new UnBassBoot());
+        addCommand(new SendCallingCard()); addCommand(new QuoteCommand()); addCommand(new InspireCommand());
 
-        //New Commands
-        addCommand(new DeleteTrackCommand());
+
 
         //Removed Commands
-        //addCommand(new MemeCommand());
+        //addCommand(new MemeCommand()); addCommand(new CockandBall());
         //addCommand(new Ronaldinho());addCommand(new WhoIsThereBass());
-        //
+        //addCommand(new JoinCommand());addCommand(new LeaveCommand());
         //
 
         //Work in Progress Commands
-
         //addCommand(new BuildPlaylist());
 
 

@@ -1,15 +1,17 @@
-package com.tyskyworks.kakorot.command;
+package com.tyskyworks.kakorot.command.removed;
 
 import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.WebhookClientBuilder;
 import club.minnced.discord.webhook.send.WebhookMessageBuilder;
 import com.tyskyworks.kakorot.Config;
+import com.tyskyworks.kakorot.command.CommandContext;
+import com.tyskyworks.kakorot.command.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
 
 import java.util.List;
 
-public class WebhookCommand implements ICommand{
+public class WebhookCommand implements ICommand {
 
     private final WebhookClient client;
 

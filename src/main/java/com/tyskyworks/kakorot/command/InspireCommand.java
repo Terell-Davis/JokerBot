@@ -1,6 +1,5 @@
 package com.tyskyworks.kakorot.command;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -32,6 +31,6 @@ public class InspireCommand implements ICommand{
 
     @Override
     public String getHelp() {
-        return null;
+        return "In case you need to be inspired!";
     }
 }

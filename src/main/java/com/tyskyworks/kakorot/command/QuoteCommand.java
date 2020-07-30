@@ -4,7 +4,6 @@ import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.WebhookClientBuilder;
 import club.minnced.discord.webhook.send.WebhookMessageBuilder;
 import com.tyskyworks.kakorot.Config;
-import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -31,7 +30,6 @@ public class QuoteCommand implements ICommand {
         final List<String> args = ctx.getArgs();
         final TextChannel channel = ctx.getChannel();
         final Message message = ctx.getMessage();
-        final Member member = ctx.getMember();
 
         final Member target = message.getMentionedMembers().get(0);
 
@@ -40,7 +38,6 @@ public class QuoteCommand implements ICommand {
             return;
         }
 
-        final User user = ctx.getAuthor();
         final String quote = String.join(" ", args.subList(1, args.size()));
 
         WebhookMessageBuilder builder = new WebhookMessageBuilder()

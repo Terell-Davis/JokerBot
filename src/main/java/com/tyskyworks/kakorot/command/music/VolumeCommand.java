@@ -8,7 +8,6 @@ import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
 import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +16,6 @@ public class VolumeCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
-        AudioManager audioManager = ctx.getGuild().getAudioManager();
         PlayerManager manager = PlayerManager.getInstance();
         GuildMusicManager music = manager.getGuildMusicManager(ctx.getGuild());
         AudioPlayer player = music.player;

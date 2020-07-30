@@ -7,11 +7,11 @@ import com.google.api.services.youtube.model.SearchResult;
 import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
+import com.tyskyworks.kakorot.command.music.musicassets.JoinCommand;
 import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
+import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
-import com.tyskyworks.kakorot.command.music.musicassets.TrackScheduler;
-
 
 import javax.annotation.Nullable;
 import java.net.MalformedURLException;
@@ -49,13 +49,11 @@ public class PlayCommand implements ICommand {
 
         if(manager.getGuildMusicManager(ctx.getGuild()).player.isPaused()){
             manager.getGuildMusicManager(ctx.getGuild()).player.setPaused(false);
-
             return;
         }
 
         if ((ctx.getArgs().isEmpty())) {
             channel.sendMessage("Please enter what you want to play").queue();
-
             return;
         }
 
@@ -66,7 +64,6 @@ public class PlayCommand implements ICommand {
 
             if (ytSearched == null) {
                 channel.sendMessage("Youtube returned no results").queue();
-
                 return;
             }
 
@@ -78,10 +75,11 @@ public class PlayCommand implements ICommand {
             join.handle(ctx);
         }
 
+        GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
+        if(memberVoiceState.inVoiceChannel()) {
             manager.loadAndPlay(ctx.getChannel(), input);
-            manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(75);
-            //turn into embed later
-            channel.sendMessage("Song(s)" + " Added");
+            manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(80);
+        }
     }
 
     private boolean isUrl(String input) {

@@ -6,7 +6,6 @@ import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class HelpCommand implements  ICommand {
         ICommand command = manager.getCommand(search);
 
         if (command == null){
-            channel.sendMessage("No Command found for `-" + search + "`").queue();
+            channel.sendMessage("No Command found for " + Config.get("prefix") + "" + search).queue();
         }
 
         channel.sendMessage(command.getHelp()).queue();
@@ -56,7 +55,7 @@ public class HelpCommand implements  ICommand {
 
     @Override
     public String getHelp() {
-        return "Show the list with commands in the bot\n" + "Usage: `-help [command]`";
+        return "Show the list with commands in the bot\n" + "Usage:" + Config.get("prefix") + "help [command]";
     }
 
     @Override

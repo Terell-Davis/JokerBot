@@ -3,13 +3,11 @@ package com.tyskyworks.kakorot.command;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import com.tyskyworks.kakorot.Config;
-import com.tyskyworks.kakorot.command.music.NowPlayingCommand;
 import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
 import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
-import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
@@ -48,7 +46,6 @@ public class SendCallingCard implements ICommand{
                 try {
                     GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
                     VoiceChannel voiceChannel = memberVoiceState.getChannel();
-                    Member selfMember = ctx.getGuild().getSelfMember();
                     PlayerManager playerManager = PlayerManager.getInstance();
                     GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
                     AudioPlayer player = musicManager.player;

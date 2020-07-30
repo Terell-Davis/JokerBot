@@ -1,5 +1,7 @@
-package com.tyskyworks.kakorot.command;
+package com.tyskyworks.kakorot.command.removed;
 
+import com.tyskyworks.kakorot.command.CommandContext;
+import com.tyskyworks.kakorot.command.ICommand;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
@@ -7,7 +9,7 @@ import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.List;
 
-public class KickCommand implements ICommand{
+public class KickCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();

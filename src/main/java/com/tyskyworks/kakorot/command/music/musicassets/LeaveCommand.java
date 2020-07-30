@@ -1,4 +1,4 @@
-package com.tyskyworks.kakorot.command.music;
+package com.tyskyworks.kakorot.command.music.musicassets;
 
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;

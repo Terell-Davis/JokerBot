@@ -1,5 +1,7 @@
-package com.tyskyworks.kakorot.command;
+package com.tyskyworks.kakorot.command.removed;
 
+import com.tyskyworks.kakorot.command.CommandContext;
+import com.tyskyworks.kakorot.command.ICommand;
 import net.dv8tion.jda.api.JDA;
 
 public class PingCommand implements ICommand {

@@ -2,7 +2,6 @@ package com.tyskyworks.kakorot.command.music;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
-import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;
 import com.tyskyworks.kakorot.command.music.musicassets.GuildMusicManager;
