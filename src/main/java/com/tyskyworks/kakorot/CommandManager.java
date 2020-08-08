@@ -27,7 +27,7 @@ public class CommandManager {
         addCommand(new PauseCommand()); addCommand(new ResumeCommand()); addCommand(new ShuffleCommand());
 
         //Joker Commands
-        addCommand(new BassBoost()); addCommand(new UnBassBoot());
+        addCommand(new BassBoost()); addCommand(new UnBassBoot()); addCommand(new FKCommand());
         addCommand(new SendCallingCard()); addCommand(new QuoteCommand()); addCommand(new InspireCommand());
 
 
