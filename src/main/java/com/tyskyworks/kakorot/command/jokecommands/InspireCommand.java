@@ -1,11 +1,13 @@
-package com.tyskyworks.kakorot.command;
+package com.tyskyworks.kakorot.command.jokecommands;
 
+import com.tyskyworks.kakorot.command.CommandContext;
+import com.tyskyworks.kakorot.command.ICommand;
 import me.duncte123.botcommons.messaging.EmbedUtils;
 import me.duncte123.botcommons.web.WebUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 
-public class InspireCommand implements ICommand{
+public class InspireCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();

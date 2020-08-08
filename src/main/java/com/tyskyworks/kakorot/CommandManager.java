@@ -4,7 +4,6 @@ import com.tyskyworks.kakorot.command.*;
 import com.tyskyworks.kakorot.command.jokecommands.*;
 import com.tyskyworks.kakorot.command.music.*;
 import com.tyskyworks.kakorot.command.music.ShuffleCommand;
-import com.tyskyworks.kakorot.command.removed.PingCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
@@ -19,29 +18,22 @@ public class CommandManager {
     public CommandManager() {
         //Base Commands
         addCommand(new HelpCommand(this)); addCommand(new PurgeCommand());
-        addCommand(new PingCommand());  addCommand(new ClearQueueCommand());
-
+        addCommand(new SendCallingCard()); addCommand(new QuoteCommand());
         //Music
         addCommand(new PlayCommand()); addCommand(new EndCommand()); addCommand(new SkipCommand());
         addCommand(new NowPlayingCommand()); addCommand(new QueueCommand());  addCommand(new VolumeCommand());
         addCommand(new PauseCommand()); addCommand(new ResumeCommand()); addCommand(new ShuffleCommand());
-
+        addCommand(new ClearQueueCommand());
         //Joker Commands
-        addCommand(new BassBoost()); addCommand(new UnBassBoot()); addCommand(new FKCommand());
-        addCommand(new SendCallingCard()); addCommand(new QuoteCommand()); addCommand(new InspireCommand());
-
-
-
+        addCommand(new BassBoost()); addCommand(new UnBassBoot());
+        addCommand(new InspireCommand()); addCommand(new FKCommand());
         //Removed Commands
-        //addCommand(new MemeCommand()); addCommand(new CockandBall());
-        //addCommand(new Ronaldinho());addCommand(new WhoIsThereBass());
-        //addCommand(new JoinCommand());addCommand(new LeaveCommand());
-        //
+        //addCommand(new MemeCommand()); addCommand(new CockandBall()); addCommand(new PingCommand());
+        //addCommand(new Ronaldinho());addCommand(new WhoIsThereBass());addCommand(new WebhookCommand());
+        //addCommand(new JoinCommand());addCommand(new LeaveCommand()); addCommand(new KickCommand());
 
         //Work in Progress Commands
         //addCommand(new BuildPlaylist());
-
-
     }
 
     // Dupe Command checker

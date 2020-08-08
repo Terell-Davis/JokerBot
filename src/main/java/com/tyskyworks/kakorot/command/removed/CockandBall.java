@@ -1,4 +1,4 @@
-package com.tyskyworks.kakorot.command.jokecommands;
+package com.tyskyworks.kakorot.command.removed;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tyskyworks.kakorot.command.CommandContext;

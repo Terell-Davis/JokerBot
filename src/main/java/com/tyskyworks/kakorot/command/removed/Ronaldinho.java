@@ -1,4 +1,4 @@
-package com.tyskyworks.kakorot.command.jokecommands;
+package com.tyskyworks.kakorot.command.removed;
 
 import com.tyskyworks.kakorot.command.CommandContext;
 import com.tyskyworks.kakorot.command.ICommand;

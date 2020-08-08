@@ -32,64 +32,59 @@ public class SendCallingCard implements ICommand{
 
         final TextChannel channel = ctx.getChannel();
         AudioManager audioManager = ctx.getGuild().getAudioManager();
+        final List<String> args = ctx.getArgs();
 
-        String[] args = ctx.getMessage().getContentRaw().split("\\s+");
-        if (args[0].equalsIgnoreCase(Config.get("prefix") + "SendCallingCard")) {
-            if (args.length < 2) {
-                // Usage
-                EmbedBuilder usage = new EmbedBuilder();
-                usage.setColor(0xff3923);
-                usage.setTitle("Specify who to send to");
-                usage.setDescription("Usage: `" + Config.get("prefix") + "SendCallingCard [member]`");
-                ctx.getChannel().sendMessage(usage.build()).queue();
-            } else {
-                try {
-                    GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
-                    VoiceChannel voiceChannel = memberVoiceState.getChannel();
-                    PlayerManager playerManager = PlayerManager.getInstance();
-                    GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
-                    AudioPlayer player = musicManager.player;
+        if (args.isEmpty()) {
+            // Usage
+            EmbedBuilder usage = new EmbedBuilder();
+            usage.setColor(0xff3923);
+            usage.setTitle("Specify who to send to");
+            usage.setDescription("Usage: `" + Config.get("prefix") + "SendCallingCard [member]`");
+            ctx.getChannel().sendMessage(usage.build()).queue();
+        } else {
+            try {
+                GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
+                VoiceChannel voiceChannel = memberVoiceState.getChannel();
+                PlayerManager playerManager = PlayerManager.getInstance();
+                GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
+                AudioPlayer player = musicManager.player;
 
-                    Random rand = new Random();
-                    int number = rand.nextInt(messages.length);
-                    EmbedBuilder Card = new EmbedBuilder();
-                    Card.setColor(0xf51707);
-                    Card.setDescription(messages[number].replace("[member]", args[1]));
-                    channel.sendMessage(Card.build()).queue();
+                Random rand = new Random();
+                int number = rand.nextInt(messages.length);
+                EmbedBuilder Card = new EmbedBuilder();
+                Card.setColor(0xf51707);
+                Card.setDescription(messages[number].replace("[member]", String.join(" ", args)));
+                channel.sendMessage(Card.build()).queue();
 
-                    if (memberVoiceState.inVoiceChannel()){
-                        audioManager.openAudioConnection(voiceChannel);
-                        channel.sendMessage("Sending Calling Card.").queue();
+                if (memberVoiceState.inVoiceChannel()){
+                    audioManager.openAudioConnection(voiceChannel);
+                    channel.sendMessage("Sending Calling Card.").queue();
 
-                        PlayerManager manager = PlayerManager.getInstance();
+                    PlayerManager manager = PlayerManager.getInstance();
 
-                        manager.loadAndPlay(ctx.getChannel(), "https://www.youtube.com/watch?v=uLOdiGGuoNk");
-                        manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(100);
-                        AudioTrackInfo info = player.getPlayingTrack().getInfo();
+                    manager.loadAndPlay(ctx.getChannel(), "https://www.youtube.com/watch?v=uLOdiGGuoNk");
+                    manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(100);
+                    AudioTrackInfo info = player.getPlayingTrack().getInfo();
 
-                        channel.sendMessage(EmbedUtils.embedMessage(String.format(
-                                "**__Now Playing:__** [%s](%s)\n%s %s - %s %s",
-                                info.title,
-                                info.uri,
-                                player.isPaused() ? "\u23F8" : "🥞 ",
-                                formatTime(player.getPlayingTrack().getPosition()),
-                                formatTime(player.getPlayingTrack().getDuration()), " 🥞"
-                        )).setColor(0xf51707).build()).queue();
-                    }
-
-
-                } catch (IllegalArgumentException e) {
-                    if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval")) {
-                        EmbedBuilder error = new EmbedBuilder();
-                        error.setColor(0xff3923);
-                        error.setTitle("⛔ The hell did you put to get this?");
-                        error.setDescription("Really what did you do??????");
-                        ctx.getChannel().sendMessage(error.build()).queue();
-                    }
+                    channel.sendMessage(EmbedUtils.embedMessage(String.format(
+                            "**__Now Playing:__** [%s](%s)\n%s %s - %s %s",
+                            info.title,
+                            info.uri,
+                            player.isPaused() ? "\u23F8" : "🥞 ",
+                            formatTime(player.getPlayingTrack().getPosition()),
+                            formatTime(player.getPlayingTrack().getDuration()), " 🥞"
+                    )).setColor(0xf51707).build()).queue();
+                }
+            } catch (IllegalArgumentException e) {
+                if (e.toString().startsWith("java.lang.IllegalArgumentException: Message retrieval")) {
+                    EmbedBuilder error = new EmbedBuilder();
+                    error.setColor(0xff3923);
+                    error.setTitle("⛔ The hell did you put to get this?");
+                    error.setDescription("Really what did you do??????");
+                    ctx.getChannel().sendMessage(error.build()).queue();
                 }
             }
         }
-
     }
 
     private String formatTime(long timeInMillis) {
@@ -112,6 +107,6 @@ public class SendCallingCard implements ICommand{
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("callingcard", "sendcard", "cc", "SendCallingCard");
+        return Arrays.asList("callingcard", "sendcard", "cc");
     }
 }
