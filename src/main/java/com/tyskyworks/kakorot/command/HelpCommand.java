@@ -25,7 +25,7 @@ public class HelpCommand implements  ICommand {
         if (args.isEmpty()){
             StringBuilder builder = new StringBuilder();
             EmbedBuilder builder2 = EmbedUtils.defaultEmbed()
-                    .setTitle("🥞__**List of Commands**__🥞");
+                    .setTitle("🥞 __**List of Commands**__ 🥞");
                     builder2.setColor(0xfa0021);
 
             builder.append("__List of commands__\n");
