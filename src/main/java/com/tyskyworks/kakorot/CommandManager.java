@@ -4,6 +4,7 @@ import com.tyskyworks.kakorot.command.*;
 import com.tyskyworks.kakorot.command.jokecommands.*;
 import com.tyskyworks.kakorot.command.music.*;
 import com.tyskyworks.kakorot.command.music.ShuffleCommand;
+import com.tyskyworks.kakorot.command.removed.WhoIsThereBass;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
@@ -25,11 +26,11 @@ public class CommandManager {
         addCommand(new PauseCommand()); addCommand(new ResumeCommand()); addCommand(new ShuffleCommand());
         addCommand(new ClearQueueCommand());
         //Joker Commands
-        addCommand(new BassBoost()); addCommand(new UnBassBoot());
+        addCommand(new BassBoost()); addCommand(new UnBassBoot()); addCommand(new WhoIsThereBass());
         addCommand(new InspireCommand()); addCommand(new FKCommand());
         //Removed Commands
         //addCommand(new MemeCommand()); addCommand(new CockandBall()); addCommand(new PingCommand());
-        //addCommand(new Ronaldinho());addCommand(new WhoIsThereBass());addCommand(new WebhookCommand());
+        //addCommand(new Ronaldinho());addCommand(new WebhookCommand());
         //addCommand(new JoinCommand());addCommand(new LeaveCommand()); addCommand(new KickCommand());
 
         //Work in Progress Commands
