@@ -25,10 +25,10 @@ public class HelpCommand implements  ICommand {
         if (args.isEmpty()){
             StringBuilder builder = new StringBuilder();
             EmbedBuilder builder2 = EmbedUtils.defaultEmbed()
-                    .setTitle("List of Commands");
+                    .setTitle("__List of Commands__");
                     builder2.setColor(0xfa0021);
 
-            builder.append("List of commands\n");
+            builder.append("__List of commands__\n");
             manager.getCommand().stream().map(ICommand::getName).forEach(
                     (it) -> builder2.appendDescription("").appendDescription(Config.get("prefix")).appendDescription(it).appendDescription("\n")
             );
