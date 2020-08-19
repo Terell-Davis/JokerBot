@@ -80,7 +80,7 @@ public class SendCallingCard implements ICommand{
                     EmbedBuilder error = new EmbedBuilder();
                     error.setColor(0xff3923);
                     error.setTitle("⛔ The hell did you put to get this?");
-                    error.setDescription("Really what did you do??????");
+                    error.setDescription("Really what did you do and why??????");
                     ctx.getChannel().sendMessage(error.build()).queue();
                 }
             }
