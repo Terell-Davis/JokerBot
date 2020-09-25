@@ -15,7 +15,7 @@ public class JokerBot {
 
     private JokerBot() throws LoginException{
         EmbedUtils.setEmbedBuilder(
-                () -> new EmbedBuilder().setColor(0xfc0328).setFooter("Test")
+                () -> new EmbedBuilder().setColor(0xfc0328).setFooter("Bot already in use")
         );
     }
 
@@ -25,7 +25,7 @@ public class JokerBot {
 
         api.addEventListener(new ReadyListener());
         api.getPresence().setStatus(OnlineStatus.ONLINE);
-        api.getPresence().setActivity(Activity.playing("Persona 4 Golden j-h"));
+        api.getPresence().setActivity(Activity.playing("Persona 3 FES j-h"));
 
     }
 }

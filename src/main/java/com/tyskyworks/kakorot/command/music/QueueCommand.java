@@ -33,6 +33,18 @@ public class QueueCommand implements ICommand {
         List<AudioTrack> tracks = new ArrayList<>(queue);
         EmbedBuilder builder = EmbedUtils.defaultEmbed()
                 .setTitle("Current Queue (Total: " + queue.size() + ")");
+        for (int i = 0; i < 25; i++) {
+            AudioTrack track = tracks.get(i);
+            AudioTrackInfo info = track.getInfo();
+
+            builder.setColor(0xf51707);
+            builder.appendDescription(String.format(
+                    (i + 1) + ". %s - [%s] 🥞\n", //(i + 1) + ". %s - %s [%s] 🥞\n",
+                    info.title,
+                    //info.author,
+                    formatTime(track.getDuration())
+            ));
+        }
         if (trackCount > 30){
             for (int i = 0; i < 25; i++) {
                 AudioTrack track = tracks.get(i);
