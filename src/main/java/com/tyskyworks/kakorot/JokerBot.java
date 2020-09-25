@@ -25,7 +25,7 @@ public class JokerBot {
 
         api.addEventListener(new ReadyListener());
         api.getPresence().setStatus(OnlineStatus.ONLINE);
-        api.getPresence().setActivity(Activity.playing("Persona 3 FES j-"));
+        api.getPresence().setActivity(Activity.playing("Persona 3 FES j-h"));
 
     }
 }
