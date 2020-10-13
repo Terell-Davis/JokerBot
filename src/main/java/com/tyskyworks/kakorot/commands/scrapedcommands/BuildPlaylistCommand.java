@@ -1,8 +1,8 @@
-package com.tyskyworks.kakorot.command.music;
+package com.tyskyworks.kakorot.commands.scrapedcommands;
 
-import com.tyskyworks.kakorot.command.CommandContext;
-import com.tyskyworks.kakorot.command.ICommand;
-import com.tyskyworks.kakorot.command.music.musicassets.PlayerManager;
+import com.tyskyworks.kakorot.commands.CommandContext;
+import com.tyskyworks.kakorot.commands.ICommand;
+import com.tyskyworks.kakorot.commands.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
@@ -14,7 +14,7 @@ import java.util.List;
 
 //unfinished
 
-public class BuildPlaylist implements ICommand {
+public class BuildPlaylistCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
@@ -25,7 +25,17 @@ public class BuildPlaylist implements ICommand {
         List<Message> messages = channel.getHistory().retrievePast(100).complete();
         System.out.println(messages);
 
+
+
+
+        /*for(int i = 0; i < 100; i++){
+            String input = messages.get(i);
+            if (!isUrl(input))
+        }*/
     }
+
+
+
     private boolean isUrl(String input) {
         try {
             new URL(input);
@@ -42,7 +52,7 @@ public class BuildPlaylist implements ICommand {
 
     @Override
     public String getHelp() {
-        return null;
+        return "Takes chat history looks for youtube urls and adds them to queue";
     }
 
     @Override
