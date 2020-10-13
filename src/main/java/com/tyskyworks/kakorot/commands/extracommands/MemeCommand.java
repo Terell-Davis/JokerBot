@@ -23,9 +23,8 @@ public class MemeCommand implements ICommand {
             final String image = data.get("image").asText();
             final String url = data.get("url").asText();
 
-            //final EmbedBuilder embed = EmbedUtils.embedImageWithTitle(title,url,image);
-            channel.sendMessage(image).queue();
-            //channel.sendMessage(embed.build()).queue();
+            final EmbedBuilder embed = EmbedUtils.embedImageWithTitle(title,url,image);
+            channel.sendMessage(embed.build()).queue();
         });
 
     }
