@@ -36,7 +36,8 @@ public class CommandManager {
         addCommand(new InspireCommand()); addCommand(new MemeCommand());
 
         //New Commands
-        addCommand(new SoundBoardCommand());
+        addCommand(new SoundBoardCommand()); addCommand(new RepostCommand()); addCommand(new GunCommand());
+
         /* To Add Later
          */
 
