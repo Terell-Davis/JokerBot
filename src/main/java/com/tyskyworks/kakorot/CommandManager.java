@@ -1,10 +1,11 @@
 package com.tyskyworks.kakorot;
 
-import com.tyskyworks.kakorot.command.*;
-import com.tyskyworks.kakorot.command.jokecommands.*;
-import com.tyskyworks.kakorot.command.music.*;
-import com.tyskyworks.kakorot.command.music.ShuffleCommand;
-import com.tyskyworks.kakorot.command.removed.WhoIsThereBass;
+import com.tyskyworks.kakorot.commands.*;
+import com.tyskyworks.kakorot.commands.extracommands.MemeCommand;
+import com.tyskyworks.kakorot.commands.jokercommands.*;
+import com.tyskyworks.kakorot.commands.music.*;
+import com.tyskyworks.kakorot.commands.music.control.*;
+import com.tyskyworks.kakorot.commands.music.musicassets.JoinCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import javax.annotation.Nullable;
@@ -17,27 +18,29 @@ public class CommandManager {
     private final List<ICommand> commands = new ArrayList<>();
 
     public CommandManager() {
-        //Base Commands
-        addCommand(new HelpCommand(this)); addCommand(new PurgeCommand());
-        addCommand(new SendCallingCard()); addCommand(new QuoteCommand());
-        //Music
-        addCommand(new PlayCommand()); addCommand(new EndCommand()); addCommand(new SkipCommand());
-        addCommand(new NowPlayingCommand()); addCommand(new QueueCommand());  addCommand(new VolumeCommand());
-        addCommand(new PauseCommand()); addCommand(new ResumeCommand()); addCommand(new ShuffleCommand());
-        addCommand(new ClearQueueCommand());
-        //Joker Commands
-        addCommand(new BassBoost()); addCommand(new UnBassBoot()); addCommand(new WhoIsThereBass());
-        addCommand(new InspireCommand()); addCommand(new FKCommand());
-        //Removed Commands
-        //addCommand(new MemeCommand()); addCommand(new CockandBall()); addCommand(new PingCommand());
-        //addCommand(new Ronaldinho());addCommand(new WebhookCommand());
-        //addCommand(new JoinCommand());addCommand(new LeaveCommand()); addCommand(new KickCommand());
+        addCommand(new HelpCommand(this));
+        addCommand(new PurgeCommand());
+        addCommand(new CallingCardCommand());
 
-        //Work in Progress Commands
-        //addCommand(new BuildPlaylist());
+        //Music Control
+        addCommand(new PlayCommand()); addCommand(new PauseCommand()); addCommand(new EndCommand());
+        addCommand(new SkipCommand()); addCommand(new VolumeCommand());addCommand(new ResumeCommand());
+        addCommand(new BassBoostCommand()); addCommand(new UnBassBootCommand());
+
+        //Music Other
+        addCommand(new DeleteTrackCommand()); addCommand(new NowPlayingCommand()); addCommand(new ShuffleCommand());
+        addCommand(new QueueCommand()); addCommand(new JoinCommand());
+
+        //Joke(r) Commands
+        addCommand(new QuoteCommand()); addCommand(new FKCommand()); addCommand(new CockandBallCommand());
+        addCommand(new InspireCommand()); addCommand(new MemeCommand());
+
+        //New Commands
+        addCommand(new SoundBoardCommand());
+        /* To Add Later
+         */
+
     }
-
-    // Dupe Command checker
     private void addCommand(ICommand cmd) {
         boolean nameFound = this.commands.stream().anyMatch((it) -> it.getName().equalsIgnoreCase(cmd.getName()));
 
@@ -54,6 +57,7 @@ public class CommandManager {
 
     @Nullable
     public ICommand getCommand(String search) {
+
         String searchLower = search.toLowerCase();
 
         for (ICommand cmd : this.commands) {
@@ -61,7 +65,6 @@ public class CommandManager {
                 return cmd;
             }
         }
-
         return null;
     }
 
@@ -69,7 +72,6 @@ public class CommandManager {
         String[] split = event.getMessage().getContentRaw()
                 .replaceFirst("(?i)" + Pattern.quote(Config.get("PREFIX")), "")
                 .split("\\s+");
-
         String invoke = split[0].toLowerCase();
         ICommand cmd = this.getCommand(invoke);
 
@@ -81,10 +83,5 @@ public class CommandManager {
 
             cmd.handle(ctx);
         }
-        //Command Not Found
-        else {
-            event.getChannel().sendMessage("⛔ Command Not Found!");
-        }
     }
-
 }
