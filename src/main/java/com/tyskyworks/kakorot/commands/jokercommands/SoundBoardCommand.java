@@ -53,7 +53,7 @@ public class SoundBoardCommand implements ICommand {
             ctx.getChannel().sendMessage(list.build()).queue();
             return;
         }else{
-            play = "src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/" + args.get(0) + ".mp3";
+            play = Config.get("JOKERSOUNDSPATH") + args.get(0) + ".mp3";
         }
 
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();

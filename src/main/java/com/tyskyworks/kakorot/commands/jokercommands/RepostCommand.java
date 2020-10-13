@@ -11,7 +11,7 @@ public class RepostCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getChannel();
-        channel.sendFile(new File("src/main/java/com/tyskyworks/kakorot/commands/jokercommands/assets/repost.png")).queue();
+        channel.sendFile(new File(Config.get("JOKEASSETSPATH")+ "repost.png")).queue();
     }
 
     @Override

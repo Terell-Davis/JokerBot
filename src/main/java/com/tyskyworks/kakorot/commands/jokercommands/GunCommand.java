@@ -1,5 +1,6 @@
 package com.tyskyworks.kakorot.commands.jokercommands;
 
+import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.commands.CommandContext;
 import com.tyskyworks.kakorot.commands.ICommand;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -10,7 +11,7 @@ public class GunCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getChannel();
-        channel.sendFile(new File("src/main/java/com/tyskyworks/kakorot/commands/jokercommands/assets/gun.png")).queue();
+        channel.sendFile(new File(Config.get("JOKEASSETSPATH")+ "gun.png")).queue();
     }
 
     @Override
