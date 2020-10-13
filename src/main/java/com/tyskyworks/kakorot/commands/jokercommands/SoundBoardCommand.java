@@ -53,7 +53,9 @@ public class SoundBoardCommand implements ICommand {
             ctx.getChannel().sendMessage(list.build()).queue();
             return;
         }else{
-            play = Config.get("JOKERSOUNDSPATH") + args.get(0) + ".mp3";
+            String path = Config.get("JOKERSOUNDSPATH");
+            System.out.print(path);
+            play = path + args.get(0) + ".mp3";
         }
 
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
