@@ -11,8 +11,8 @@ public class GunCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getChannel();
-        String path = Config.get("ASSETSPATH");
-        System.out.print(path);
+
+        String path = Config.get("ASSETS");
         channel.sendFile(new File( path + "gun.png")).queue();
     }
 
