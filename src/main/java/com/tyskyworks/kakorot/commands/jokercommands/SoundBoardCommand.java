@@ -53,7 +53,11 @@ public class SoundBoardCommand implements ICommand {
         }
         String test = Config.get("PREFIX");
         System.out.print(test + " = test \n");
-        String path = Config.get("SOUNDSPATH");
+        String test1 = Config.get("TEST");
+        System.out.print(test1 + " = test1 \n");
+        String test2 = Config.get("TEST2");
+        System.out.print(test2 + " = test2 \n");
+        String path = Config.get("SOUNDS");
         System.out.print(path + " = path \n");
         System.out.print(args.get(0) + " = args \n");
         String play = path + args.get(0) + ".mp3";
