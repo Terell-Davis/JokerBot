@@ -56,11 +56,8 @@ public class SoundBoardCommand implements ICommand {
             String path = Config.get("JOKERSOUNDSPATH");
 
             System.out.print(args.get(0) + " - args \n");
-            String mp3 = args.get(0).replace("null" + args.get(0), args.get(0));
-
-            System.out.print(mp3 + " - mp3\n");
-            play = "src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/" + mp3 + ".mp3";
-            System.out.print(play + "- play \n");
+            play = path + args.get(0) + ".mp3";
+            System.out.print(play);
         }
 
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
