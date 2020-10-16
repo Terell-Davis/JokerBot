@@ -40,8 +40,6 @@ public class SoundBoardCommand implements ICommand {
                 "tobecon", "utintro", "winxperror", "yodacbt", "yodapenetrating", "yoo"
         };
 
-        String play;
-
         if (args.get(0).equals("list")){
             EmbedBuilder list = new EmbedBuilder();
             list.setColor(0xf51707);
@@ -52,13 +50,14 @@ public class SoundBoardCommand implements ICommand {
             }
             ctx.getChannel().sendMessage(list.build()).queue();
             return;
-        }else{
-            String path = Config.get("JOKERSOUNDSPATH");
-
-            System.out.print(args.get(0) + " - args \n");
-            play = path + args.get(0) + ".mp3";
-            System.out.print(play);
         }
+
+        String path = Config.get("JOKERSOUNDSPATH");
+
+        System.out.print(args.get(0) + "/args \n");
+        String play = path + args.get(0) + ".mp3";
+        System.out.print(play + "/play\n");
+
 
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
         if(memberVoiceState.inVoiceChannel()) {
