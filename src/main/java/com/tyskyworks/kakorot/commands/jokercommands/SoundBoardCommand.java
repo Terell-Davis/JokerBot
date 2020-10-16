@@ -60,7 +60,7 @@ public class SoundBoardCommand implements ICommand {
 
             System.out.print(mp3 + " - mp3\n");
             play = "src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/" + mp3 + ".mp3";
-            System.out.print(play + "- play\n");
+            System.out.print(play + "- play \n");
         }
 
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
