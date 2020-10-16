@@ -51,7 +51,8 @@ public class SoundBoardCommand implements ICommand {
             ctx.getChannel().sendMessage(list.build()).queue();
             return;
         }
-
+        String test = Config.get("PREFIX");
+        System.out.print(test + " = test \n");
         String path = Config.get("SOUNDSPATH");
         System.out.print(path + " = path \n");
         System.out.print(args.get(0) + " = args \n");
