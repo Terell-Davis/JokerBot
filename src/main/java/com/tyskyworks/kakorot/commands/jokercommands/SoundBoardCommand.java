@@ -52,7 +52,7 @@ public class SoundBoardCommand implements ICommand {
             return;
         }
 
-        String path = "/src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/";
+        String path = "/home/tdavi1/discordbots/JokerBot/src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/";
         System.out.print(path + " = path\n");
         System.out.print(args.get(0) + " = args \n");
         String play = path + args.get(0) + ".mp3";
