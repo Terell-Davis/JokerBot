@@ -55,7 +55,7 @@ public class SoundBoardCommand implements ICommand {
         }else{
             String path = Config.get("JOKERSOUNDSPATH");
 
-            System.out.print(args.get(0) + " - args\n");
+            System.out.print(args.get(0) + " - args \n");
             String mp3 = args.get(0).replace("null" + args.get(0), args.get(0));
 
             System.out.print(mp3 + " - mp3\n");
