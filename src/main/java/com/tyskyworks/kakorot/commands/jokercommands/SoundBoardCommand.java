@@ -52,11 +52,11 @@ public class SoundBoardCommand implements ICommand {
             return;
         }
 
-        String path = "src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/";
-        System.out.print(path + "/path\n");
-        System.out.print(args.get(0) + "/args \n");
+        String path = "/src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/";
+        System.out.print(path + " = path\n");
+        System.out.print(args.get(0) + " = args \n");
         String play = path + args.get(0) + ".mp3";
-        System.out.print(play + "/play\n");
+        System.out.print(play + " = play\n");
 
 
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
