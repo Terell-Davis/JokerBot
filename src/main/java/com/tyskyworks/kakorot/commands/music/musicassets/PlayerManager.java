@@ -7,6 +7,7 @@ import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.tyskyworks.kakorot.Config;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -80,7 +81,7 @@ public class PlayerManager {
 
             @Override
             public void noMatches() {
-                channel.sendMessage("Nothing found by " + trackUrl.replace("src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/", "")).queue();
+                channel.sendMessage("Nothing found by " + trackUrl.replace(Config.get("SOUNDS"), "")).queue();
             }
 
             @Override
