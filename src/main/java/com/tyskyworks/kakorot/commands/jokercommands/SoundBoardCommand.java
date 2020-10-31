@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class SoundBoardCommand implements ICommand {
         final TextChannel channel = ctx.getChannel();
         PlayerManager manager = PlayerManager.getInstance();
         final List<String> args = ctx.getArgs();
+        final String path = Config.get("SOUNDS") + "/";
 
         if ((ctx.getArgs().isEmpty())) {
             channel.sendMessage("Please enter what sound to play!").queue();
@@ -31,30 +33,29 @@ public class SoundBoardCommand implements ICommand {
             JoinCommand join = new JoinCommand();
             join.handle(ctx);
         }
-        String[] messages = new String[]{"amiibo", "ascending", "augh", "awww", "babababa", "bababooey", "bruh",
-                "cockroach", "crit", "cutg", "cutg2", "death", "dialup", "dominating", "e", "flowey",
-                "fortnite", "foxcomeon", "foxfiryah", "foxhah", "foxmission", "fridaysailer", "game",
-                "hitmaker", "inception", "loudnight", "marioscream", "minedrink", "mineeat", "moof",
-                "myfinalmessage", "pan", "pegging", "pelo", "ping", "root", "sans1", "sans2",
-                "sans4", "screemstar", "sjyoo", "speen", "superspeen", "tacobell", "tidus", "tingle",
-                "tobecon", "utintro", "winxperror", "yodacbt", "yodapenetrating", "yoo"
-        };
+
+        File sound = new File(path);
+        String[] sounds = sound.list();
 
         if (args.get(0).equals("list")){
             EmbedBuilder list = new EmbedBuilder();
             list.setColor(0xf51707);
             list.setTitle("🥞 **__Sounds__** 🥞");
-            for (int i = 0; i < messages.length; i++){
+            int counter = 0;
+            for (String soundname : sounds){
+                 counter++;
                 list.setColor(0xf51707);
-                list.appendDescription((i + 1) + ". " + messages[i] + " \n");
+                list.appendDescription((counter + ". " + soundname.replace(".mp3", "") + "\n"));
             }
+
             ctx.getChannel().sendMessage(list.build()).queue();
             return;
         }
-        String path = Config.get("SOUNDS");
+
         String play = path + args.get(0) + ".mp3";
 
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
+        assert memberVoiceState != null;
         if(memberVoiceState.inVoiceChannel()) {
             manager.loadAndPlay(ctx.getChannel(), play);
             manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(105);
