@@ -28,8 +28,8 @@ public class CommandManager {
         addCommand(new BassBoostCommand()); addCommand(new UnBassBootCommand());
 
         //Music Other
-        addCommand(new DeleteTrackCommand()); addCommand(new NowPlayingCommand()); addCommand(new ShuffleCommand());
-        addCommand(new QueueCommand()); addCommand(new JoinCommand());
+        addCommand(new AddTrackCommand()); addCommand(new DeleteTrackCommand()); addCommand(new NowPlayingCommand());
+        addCommand(new ShuffleCommand()); addCommand(new QueueCommand()); addCommand(new JoinCommand());
 
         //Joke(r) Commands
         addCommand(new QuoteCommand()); addCommand(new FKCommand()); addCommand(new CockandBallCommand());
