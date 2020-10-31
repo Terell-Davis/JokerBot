@@ -41,7 +41,7 @@ public class DeleteTrackCommand implements ICommand {
             return;
         }
 
-        if(args.get(0) == "all"){
+        if(args.get(0).equals("all")){
             musicManager.scheduler.getQueue().clear();
             EmbedBuilder all = new EmbedBuilder();
             all.setColor(0xf51707);
@@ -74,7 +74,7 @@ public class DeleteTrackCommand implements ICommand {
 
     @Override
     public String getHelp() {
-        return "Usage: ";
+        return "Usage: `" + Config.get("prefix") + "deletetrack [Track #]`";
     }
 
     @Override
