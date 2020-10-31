@@ -17,7 +17,7 @@ public class QuoteCommand implements ICommand {
     private final WebhookClient client;
 
     public QuoteCommand() {
-        WebhookClientBuilder builder = new WebhookClientBuilder(Config.get("webhook_url")); // or id, token
+        WebhookClientBuilder builder = new WebhookClientBuilder(Config.get("webhook_url"));
         builder.setThreadFactory((job) -> {
             Thread thread = new Thread(job);
             thread.setName("Quotes");

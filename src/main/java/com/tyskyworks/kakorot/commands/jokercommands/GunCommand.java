@@ -12,7 +12,7 @@ public class GunCommand implements ICommand {
     public void handle(CommandContext ctx) {
         TextChannel channel = ctx.getChannel();
 
-        String path = Config.get("ASSETS");
+        String path = Config.get("ASSETS") + "/";
         channel.sendFile(new File( path + "gun.png")).queue();
     }
 
