@@ -7,6 +7,7 @@ import com.google.api.services.youtube.model.SearchResult;
 import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.commands.CommandContext;
 import com.tyskyworks.kakorot.commands.ICommand;
+import com.tyskyworks.kakorot.commands.music.logging.LoggingCommand;
 import com.tyskyworks.kakorot.commands.music.musicassets.JoinCommand;
 import com.tyskyworks.kakorot.commands.music.musicassets.PlayerManager;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
@@ -14,6 +15,8 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 import javax.annotation.Nullable;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -75,9 +78,21 @@ public class PlayCommand implements ICommand {
             join.handle(ctx);
         }
 
+        boolean toggle = LoggingCommand.toggle;
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
         if(memberVoiceState.inVoiceChannel()) {
             manager.loadAndPlay(ctx.getChannel(), input);
+            if (toggle){
+                try{
+                FileOutputStream log = new FileOutputStream("src/main/java/com/tyskyworks/kakorot/musiclog.txt", true);
+                String write = input + "\n";
+                byte[] strToBytes = write.getBytes();
+                log.write(strToBytes);
+                log.close();
+            }catch (IOException e){
+                    System.out.print("An error has occurred\n" + e);
+                }
+            }
             manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(80);
         }
     }

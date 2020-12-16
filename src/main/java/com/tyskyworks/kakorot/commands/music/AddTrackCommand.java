@@ -119,7 +119,7 @@ public class AddTrackCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "add";
+        return "addtrack";
     }
 
     @Override
@@ -129,6 +129,6 @@ public class AddTrackCommand implements ICommand {
 
     @Override
     public List<String> getAliases() {
-        return Arrays.asList("add", "addtrack");
+        return Arrays.asList("add");
     }
 }
