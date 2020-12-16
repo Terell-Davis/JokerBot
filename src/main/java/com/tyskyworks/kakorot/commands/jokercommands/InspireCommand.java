@@ -11,6 +11,7 @@ public class InspireCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
+
         WebUtils.ins.getText("https://inspirobot.me/api?generate=true&oy=vey").async((text) -> {
             final EmbedBuilder embed;
             if (text != null) {

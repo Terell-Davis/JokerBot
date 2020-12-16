@@ -37,7 +37,7 @@ public class CallingCardCommand implements ICommand{
         if (args.isEmpty()) {
             EmbedBuilder usage = new EmbedBuilder();
             usage.setColor(0xff3923);
-            usage.setTitle("Specify who to send to");
+            usage.setTitle("Specify whom to send");
             usage.setDescription("Usage: `" + Config.get("prefix") + "SendCallingCard [member]`");
             ctx.getChannel().sendMessage(usage.build()).queue();
         } else {

@@ -2,7 +2,6 @@ package com.tyskyworks.kakorot.commands;
 
 import com.tyskyworks.kakorot.CommandManager;
 import com.tyskyworks.kakorot.Config;
-import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 
@@ -24,7 +23,7 @@ public class HelpCommand implements  ICommand {
 
         if (args.isEmpty()){
             StringBuilder builder = new StringBuilder();
-            EmbedBuilder builder2 = EmbedUtils.defaultEmbed()
+            EmbedBuilder builder2 = new EmbedBuilder()
                     .setTitle("🥞 __**List of Commands**__ 🥞");
                     builder2.setColor(0xfa0021);
 

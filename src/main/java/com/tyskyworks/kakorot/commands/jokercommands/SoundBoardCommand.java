@@ -24,9 +24,12 @@ public class SoundBoardCommand implements ICommand {
         final List<String> args = ctx.getArgs();
         final String path = Config.get("SOUNDS") + "/";
 
-        if ((ctx.getArgs().isEmpty())) {
-            channel.sendMessage("Please enter what sound to play!").queue();
-            return;
+        if (args.isEmpty()) {
+            EmbedBuilder fk = new EmbedBuilder();
+            fk.setColor(0xf51707);
+            fk.setTitle("Specify who to hate");
+            fk.setDescription("Usage: `" + Config.get("prefix") + "fk <who your homie hate>`");
+            channel.sendMessage(fk.build()).queue();
         }
 
         if (!audioManager.isConnected()) {

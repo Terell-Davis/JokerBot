@@ -5,6 +5,9 @@ import com.tyskyworks.kakorot.commands.extracommands.MemeCommand;
 import com.tyskyworks.kakorot.commands.jokercommands.*;
 import com.tyskyworks.kakorot.commands.music.*;
 import com.tyskyworks.kakorot.commands.music.control.*;
+import com.tyskyworks.kakorot.commands.music.logging.ClearLogCommand;
+import com.tyskyworks.kakorot.commands.music.logging.LoggingCommand;
+import com.tyskyworks.kakorot.commands.music.logging.ShowLogCommand;
 import com.tyskyworks.kakorot.commands.music.musicassets.JoinCommand;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
@@ -25,21 +28,27 @@ public class CommandManager {
         //Music Control
         addCommand(new PlayCommand()); addCommand(new PauseCommand()); addCommand(new EndCommand());
         addCommand(new SkipCommand()); addCommand(new VolumeCommand());addCommand(new ResumeCommand());
-        addCommand(new BassBoostCommand()); addCommand(new UnBassBootCommand());
+
 
         //Music Other
         addCommand(new AddTrackCommand()); addCommand(new DeleteTrackCommand()); addCommand(new NowPlayingCommand());
         addCommand(new ShuffleCommand()); addCommand(new QueueCommand()); addCommand(new JoinCommand());
+        addCommand(new SoundBoardCommand());
 
         //Joke(r) Commands
         addCommand(new QuoteCommand()); addCommand(new FKCommand()); addCommand(new CockandBallCommand());
-        addCommand(new InspireCommand()); addCommand(new MemeCommand());
+        addCommand(new InspireCommand()); addCommand(new MemeCommand()); addCommand(new RepostCommand());
+        addCommand(new GunCommand());
 
         //New Commands
-        addCommand(new SoundBoardCommand()); addCommand(new RepostCommand()); addCommand(new GunCommand());
+        addCommand(new LoggingCommand()); addCommand(new ShowLogCommand()); addCommand(new ClearLogCommand());
+        addCommand(new BuildPlaylistCommand());
 
-        /* To Add Later
-         */
+
+        /* Disabled
+        addCommand(new BassBoostCommand()); addCommand(new UnBassBootCommand());
+        */
+
 
     }
     private void addCommand(ICommand cmd) {

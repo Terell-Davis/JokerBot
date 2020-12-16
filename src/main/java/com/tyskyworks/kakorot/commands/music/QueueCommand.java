@@ -6,7 +6,6 @@ import com.tyskyworks.kakorot.commands.CommandContext;
 import com.tyskyworks.kakorot.commands.ICommand;
 import com.tyskyworks.kakorot.commands.music.musicassets.GuildMusicManager;
 import com.tyskyworks.kakorot.commands.music.musicassets.PlayerManager;
-import me.duncte123.botcommons.messaging.EmbedUtils;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.TextChannel;
 
@@ -31,7 +30,7 @@ public class QueueCommand implements ICommand {
 
         int trackCount = Math.min(queue.size(), 20);
         List<AudioTrack> tracks = new ArrayList<>(queue);
-        EmbedBuilder builder = EmbedUtils.defaultEmbed()
+        EmbedBuilder builder = new EmbedBuilder()
                 .setTitle("Current Queue (Total: " + queue.size() + ")");
 
         for (int i = 0; i < trackCount; i++) {

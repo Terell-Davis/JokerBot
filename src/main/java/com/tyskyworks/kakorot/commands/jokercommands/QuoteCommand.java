@@ -6,6 +6,7 @@ import club.minnced.discord.webhook.send.WebhookMessageBuilder;
 import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.commands.CommandContext;
 import com.tyskyworks.kakorot.commands.ICommand;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -35,7 +36,11 @@ public class QuoteCommand implements ICommand {
         final Member target = message.getMentionedMembers().get(0);
 
         if (args.size() < 2 || message.getMentionedMembers().isEmpty()) {
-            channel.sendMessage("Missing arguments; `j-quote [member] <message>`").queue();
+            EmbedBuilder quote = new EmbedBuilder();
+            quote.setColor(0xf51707);
+            quote.setTitle("Specify who to hate");
+            quote.setDescription("Usage: `" + Config.get("prefix") + "quote [member] <message>`");
+            channel.sendMessage(quote.build()).queue();
             return;
         }
 
