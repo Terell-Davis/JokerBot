@@ -1,5 +1,6 @@
 package com.tyskyworks.kakorot.commands.music.logging;
 
+import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.commands.CommandContext;
 import com.tyskyworks.kakorot.commands.ICommand;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -14,7 +15,8 @@ import java.util.List;
 public class ShowLogCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
-        File musiclog = new File("src/main/java/com/tyskyworks/kakorot/musiclog.txt");
+        String path = Config.get("LOG");
+        File musiclog = new File(path);
 
         EmbedBuilder list = new EmbedBuilder();
         list.setColor(0xf51707);
@@ -22,9 +24,10 @@ public class ShowLogCommand implements ICommand {
 
         try{
             BufferedReader log = new BufferedReader(new FileReader(musiclog));
-            String read;
-            while ((read = log.readLine()) != null) {
+            String read; int count = 20;
+            while ((read = log.readLine()) != null && 0 < count) {
                 list.appendDescription(read + "\n");
+                count--;
             }
             ctx.getChannel().sendMessage(list.build()).queue();
         }catch(IOException e){

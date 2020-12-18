@@ -17,13 +17,10 @@ public class CockandBallCommand implements ICommand {
             final JsonNode data = json.get("titles");
             final String name = data.get("display").asText();
             final String text = json.get("extract").asText();
-
-
             final EmbedBuilder embed = EmbedUtils.embedMessageWithTitle(name, text + " 🍆").setColor(0xbf0208);
 
             channel.sendMessage(embed.build()).queue();
         });
-
     }
 
     @Override

@@ -32,13 +32,12 @@ public class QuoteCommand implements ICommand {
         final List<String> args = ctx.getArgs();
         final TextChannel channel = ctx.getChannel();
         final Message message = ctx.getMessage();
-
         final Member target = message.getMentionedMembers().get(0);
 
         if (args.size() < 2 || message.getMentionedMembers().isEmpty()) {
             EmbedBuilder quote = new EmbedBuilder();
             quote.setColor(0xf51707);
-            quote.setTitle("Specify who to hate");
+            quote.setTitle("Used to quote a person with name");
             quote.setDescription("Usage: `" + Config.get("prefix") + "quote [member] <message>`");
             channel.sendMessage(quote.build()).queue();
             return;
@@ -52,7 +51,6 @@ public class QuoteCommand implements ICommand {
                 .setContent(quote);
 
         client.send(builder.build());
-
     }
 
     @Override

@@ -22,7 +22,6 @@ public class InspireCommand implements ICommand {
             channel.sendMessage(embed.build()).queue();
 
         });
-
     }
 
     @Override

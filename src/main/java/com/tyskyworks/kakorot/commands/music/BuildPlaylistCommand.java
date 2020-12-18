@@ -21,6 +21,7 @@ public class BuildPlaylistCommand implements ICommand {
         final TextChannel channel = ctx.getChannel();
         PlayerManager manager = PlayerManager.getInstance();
 
+
         EmbedBuilder list = new EmbedBuilder();
         list.setColor(0xf51707);
         list.setTitle("🥞 __Building playlist from log__ 🥞");
@@ -37,6 +38,11 @@ public class BuildPlaylistCommand implements ICommand {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else{
+            EmbedBuilder other = new EmbedBuilder();
+            other.setColor(0xf51707);
+            other.setDescription("Please join a voice channel to use this command!");
+            channel.sendMessage(other.build()).queue();
         }
     }
             @Override

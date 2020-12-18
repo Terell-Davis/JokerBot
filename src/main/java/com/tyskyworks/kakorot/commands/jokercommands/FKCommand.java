@@ -25,7 +25,7 @@ public class FKCommand implements ICommand {
             } else{
                 try {
                    EmbedBuilder fk = new EmbedBuilder();
-                   fk.setColor(0xf51707);String.join(" ", args);
+                   fk.setColor(0xf51707); String.join(" ", args);
                    fk.setDescription(place[0].replace("{name}",String.join(" ", args)));
                    channel.sendMessage(fk.build()).queue();
                 } catch (IllegalArgumentException e) {
@@ -39,7 +39,6 @@ public class FKCommand implements ICommand {
                 }
             }
     }
-
 
     @Override
     public String getName() {

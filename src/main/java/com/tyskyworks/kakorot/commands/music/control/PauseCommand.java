@@ -8,6 +8,8 @@ import com.tyskyworks.kakorot.commands.ICommand;
 import com.tyskyworks.kakorot.commands.music.musicassets.GuildMusicManager;
 import com.tyskyworks.kakorot.commands.music.musicassets.PlayerManager;
 import me.duncte123.botcommons.messaging.EmbedUtils;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.Arrays;
@@ -21,27 +23,37 @@ public class PauseCommand implements ICommand {
         GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
         TextChannel channel = ctx.getChannel();
         AudioPlayer player = musicManager.player;
-
+        GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
 
         if (player.getPlayingTrack() == null) {
-            channel.sendMessage("The player isn't playing anything").queue();
+            EmbedBuilder pause = new EmbedBuilder();
+            pause.setColor(0xf51707);
+            pause.setDescription("The player isn't playing anything.");
+            channel.sendMessage(pause.build()).queue();
             return;
         }
 
-        musicManager.player.setPaused(true);
-        channel.sendMessage("[Last Surprise Stops]").queue();
+        if (memberVoiceState.inVoiceChannel()) {
+            musicManager.player.setPaused(true);
+            channel.sendMessage("[Last Surprise Stops]").queue();
 
-        AudioTrackInfo info = player.getPlayingTrack().getInfo();
-        channel.sendMessage(EmbedUtils.embedMessage(String.format(
-                "**__Now Paused:__** [%s](%s)\n%s %s - %s %s",
-                info.title,
-                info.uri,
-                player.isPaused() ? "\u23F8" : "🥞 ",
-                formatTime(player.getPlayingTrack().getPosition()),
-                formatTime(player.getPlayingTrack().getDuration()), " 🥞"
-        )).setColor(0xf51707).build()).queue();
+            AudioTrackInfo info = player.getPlayingTrack().getInfo();
+            channel.sendMessage(EmbedUtils.embedMessage(String.format(
+                    "**__Now Paused:__** [%s](%s)\n%s %s - %s %s",
+                    info.title,
+                    info.uri,
+                    player.isPaused() ? "\u23F8" : "🥞 ",
+                    formatTime(player.getPlayingTrack().getPosition()),
+                    formatTime(player.getPlayingTrack().getDuration()), " 🥞"
+            )).setColor(0xf51707).build()).queue();
 
-        channel.sendMessage("`" + Config.get("prefix") + "resume` to resume song").queue();
+            channel.sendMessage("`" + Config.get("prefix") + "resume` to resume song").queue();
+        }else{
+            EmbedBuilder other = new EmbedBuilder();
+            other.setColor(0xf51707);
+            other.setDescription("Please join a voice channel to use this command!");
+            channel.sendMessage(other.build()).queue();
+        }
     }
 
     private String formatTime(long timeInMillis) {

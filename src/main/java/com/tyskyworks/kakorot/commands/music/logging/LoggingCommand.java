@@ -16,8 +16,9 @@ public class LoggingCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
         final TextChannel channel = ctx.getChannel();
+        String path = Config.get("LOG");
         try {
-            File musiclog = new File("src/main/java/com/tyskyworks/kakorot/musiclog.txt");
+            File musiclog = new File(path);
 
             if (!musiclog.exists()) {
                 musiclog.createNewFile();
@@ -28,7 +29,7 @@ public class LoggingCommand implements ICommand {
                 usage.setColor(0xf51707);
                 usage.setTitle("Specify True/False");
                 usage.setDescription("Usage: `" + Config.get("prefix") + "logging [True/False]`");
-                ctx.getChannel().sendMessage(usage.build()).queue();
+                channel.sendMessage(usage.build()).queue();
                 return;
             }
 

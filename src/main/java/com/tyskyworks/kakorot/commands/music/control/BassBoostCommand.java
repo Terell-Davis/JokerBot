@@ -16,6 +16,7 @@ public class BassBoostCommand implements ICommand {
         GuildMusicManager music = manager.getGuildMusicManager(ctx.getGuild());
 
         if (ctx.getAuthor().isBot()) return;
+
         try {
             music.player.setVolume(2147483647);
             EmbedBuilder success = new EmbedBuilder();
@@ -30,7 +31,6 @@ public class BassBoostCommand implements ICommand {
                 error.setDescription("Really please let me know");
                 ctx.getChannel().sendMessage(error.build()).queue();
             }
-
         }
     }
 

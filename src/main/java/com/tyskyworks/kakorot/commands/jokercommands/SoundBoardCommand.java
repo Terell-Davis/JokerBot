@@ -22,7 +22,7 @@ public class SoundBoardCommand implements ICommand {
         final TextChannel channel = ctx.getChannel();
         PlayerManager manager = PlayerManager.getInstance();
         final List<String> args = ctx.getArgs();
-        final String path = Config.get("SOUNDS") + "/";
+        final String path = Config.get("SOUNDS");
 
         if (args.isEmpty()) {
             EmbedBuilder fk = new EmbedBuilder();

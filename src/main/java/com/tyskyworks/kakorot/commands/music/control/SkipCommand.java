@@ -7,6 +7,8 @@ import com.tyskyworks.kakorot.commands.music.NowPlayingCommand;
 import com.tyskyworks.kakorot.commands.music.musicassets.GuildMusicManager;
 import com.tyskyworks.kakorot.commands.music.musicassets.PlayerManager;
 import com.tyskyworks.kakorot.commands.music.musicassets.TrackScheduler;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.Arrays;
@@ -20,19 +22,31 @@ public class SkipCommand implements ICommand {
             GuildMusicManager musicManager = playerManager.getGuildMusicManager(ctx.getGuild());
             TrackScheduler scheduler = musicManager.scheduler;
             AudioPlayer player = musicManager.player;
+            GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
 
+            if(memberVoiceState.inVoiceChannel()) {
+                if (player.getPlayingTrack() == null) {
+                    EmbedBuilder empty = new EmbedBuilder();
+                    empty.setColor(0xf51707);
+                    empty.setDescription("The Player isn't playing anything");
+                    channel.sendMessage(empty.build()).queue();
+                    return;
+                }
 
-            if (player.getPlayingTrack() == null) {
-                channel.sendMessage("The player isn't playing anything").queue();
-                return;
+                scheduler.nextTrack();
+                EmbedBuilder skip = new EmbedBuilder();
+                skip.setColor(0xf51707);
+                skip.setDescription("Skipping current track");
+                channel.sendMessage(skip.build()).queue();
+                NowPlayingCommand playing = new NowPlayingCommand();
+                playing.handle(ctx);
+            }else{
+                EmbedBuilder other = new EmbedBuilder();
+                other.setColor(0xf51707);
+                other.setDescription("Please join a voice channel to use this command!");
+                channel.sendMessage(other.build()).queue();
             }
-
-            scheduler.nextTrack();
-            channel.sendMessage("Skipping current track").queue();
-            NowPlayingCommand playing = new NowPlayingCommand();
-            playing.handle(ctx);
         }
-
 
     @Override
     public String getName() {
