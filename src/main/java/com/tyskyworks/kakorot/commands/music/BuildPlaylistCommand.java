@@ -1,5 +1,6 @@
 package com.tyskyworks.kakorot.commands.music;
 
+import com.tyskyworks.kakorot.Config;
 import com.tyskyworks.kakorot.commands.CommandContext;
 import com.tyskyworks.kakorot.commands.ICommand;
 import com.tyskyworks.kakorot.commands.music.musicassets.PlayerManager;
@@ -15,9 +16,9 @@ import java.util.List;
 public class BuildPlaylistCommand implements ICommand {
     @Override
     public void handle(CommandContext ctx) {
-        File musiclog = new File("src/main/java/com/tyskyworks/kakorot/musiclog.txt");
+        String path = Config.get("LOG");
+        File musiclog = new File(path);
         GuildVoiceState memberVoiceState = ctx.getMember().getVoiceState();
-        AudioManager audioManager = ctx.getGuild().getAudioManager();
         final TextChannel channel = ctx.getChannel();
         PlayerManager manager = PlayerManager.getInstance();
 
