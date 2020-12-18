@@ -3,5 +3,5 @@ PREFIX=j-
 OWNER_ID= # For Shutdown Command
 WEBHOOK_URL= # Discord Webhook URL used for qoutecommand
 YOUTUBE= # Your Youtube API Key
-ASSETS=src/main/java/com/tyskyworks/kakorot/commands/jokercommands/assets # Do not end with a '/'
-SOUNDS=src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds # Do not end with a '/'
+ASSETS=src/main/java/com/tyskyworks/kakorot/commands/jokercommands/assets/
+SOUNDS=src/main/java/com/tyskyworks/kakorot/commands/jokercommands/sounds/
