@@ -24,7 +24,7 @@ public class ShowLogCommand implements ICommand {
 
         try{
             BufferedReader log = new BufferedReader(new FileReader(musiclog));
-            String read; int count = 20;
+            String read; int count = 25;
             while ((read = log.readLine()) != null && 0 < count) {
                 list.appendDescription(read + "\n");
                 count--;

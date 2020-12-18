@@ -29,9 +29,10 @@ public class BuildPlaylistCommand implements ICommand {
         if(memberVoiceState.inVoiceChannel()) {
             try {
                 BufferedReader log = new BufferedReader(new FileReader(musiclog));
-                String read;
-                while ((read = log.readLine()) != null) {
+                String read; int count = 25;
+                while ((read = log.readLine()) != null && 0 < count) {
                     manager.loadAndPlay(ctx.getChannel(), read);
+                    count--;
                 }
                 manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(80);
                 channel.sendMessage(list.build()).queue();
