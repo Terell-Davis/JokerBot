@@ -29,7 +29,7 @@ public class SoundBoardCommand implements ICommand {
             fk.setColor(0xf51707);
             fk.setTitle("Specify which sound to play");
             fk.setDescription("Usage: `" + Config.get("prefix") + "sb <sound name>`" + "\n `"
-                    + Config.get("prefix") + "sb all` to show list of available sounds");
+                    + Config.get("prefix") + "sb list` to show list of available sounds");
             channel.sendMessage(fk.build()).queue();
         }
 
