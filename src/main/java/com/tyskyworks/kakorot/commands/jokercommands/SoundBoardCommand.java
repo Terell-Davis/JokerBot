@@ -27,8 +27,9 @@ public class SoundBoardCommand implements ICommand {
         if (args.isEmpty()) {
             EmbedBuilder fk = new EmbedBuilder();
             fk.setColor(0xf51707);
-            fk.setTitle("Specify who to hate");
-            fk.setDescription("Usage: `" + Config.get("prefix") + "fk <who your homie hate>`");
+            fk.setTitle("Specify which sound to play");
+            fk.setDescription("Usage: `" + Config.get("prefix") + "sb <sound name>`" + "\n `"
+                    + Config.get("prefix") + "sb all` to show list of available sounds");
             channel.sendMessage(fk.build()).queue();
         }
 
