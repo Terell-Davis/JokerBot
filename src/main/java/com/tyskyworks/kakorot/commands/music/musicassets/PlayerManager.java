@@ -81,7 +81,7 @@ public class PlayerManager {
 
             @Override
             public void noMatches() {
-                channel.sendMessage("Nothing found by " + trackUrl.replace(Config.get("SOUNDS"), "")).queue();
+                channel.sendMessage("No Track/Playlist Found").queue();
             }
 
             @Override
