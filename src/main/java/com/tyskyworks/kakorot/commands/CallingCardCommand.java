@@ -27,7 +27,10 @@ public class CallingCardCommand implements ICommand{
                 "Sir [member], the money-devouring sinner of gluttony. You indulge in scamming others with horrendous methods that target minors exclusively. We have decided to make you confess all your crimes with your own mouth. We will take your distorted desires without fail. From, \nThe Phantom Thieves.",
                 "[member] has committed a great sin of drowning in sloth. Thus, we will rob every last bit of those distorted desires.",
                 "Sir [member] the great profiteering sinner of greed. Your success and global fame exists due to the tyranny you rain over your employees. Thus, we have decided to make you confess all your crimes with your own mouth. From, \nThe Phantom Thieves.",
-                "Madame [member], a great sinner of jealousy. You have lost yourself amidst your obsession with success. For its sake, you are even willing to promote injustice as justice. From, \nThe Phantom Thieves."
+                "Madame [member], a great sinner of jealousy. You have lost yourself amidst your obsession with success. For its sake, you are even willing to promote injustice as justice. From, \nThe Phantom Thieves.",
+                "Madame [member], curator of the movie theaters of deceit. Since you play movies that advocate self-abuse and trick audience members into confusing soullessness for peace, we will steal those distorted movies from you. Signed, the Phantom Thieves.",
+                "To the ostentatious swindler, Mr. [member]... You are a depraved miscreant who holds others in contempt and steals their work, lining your own pockets all the while. We refuse to overlook the crimes you commit as you wear a false crown. Tonight, we take back the Desires you've stolen.",
+                "To the ostentatious swindler, Mr. [member]... You are a depraved miscreant who holds others in contempt and steals their work, lining your own pockets all the while. We refuse to overlook the crimes you commit as you wear a false crown. Tonight, we take back the Desires you've stolen. "
         };
 
         final TextChannel channel = ctx.getChannel();
@@ -61,7 +64,7 @@ public class CallingCardCommand implements ICommand{
 
                     PlayerManager manager = PlayerManager.getInstance();
 
-                    manager.loadAndPlay(ctx.getChannel(), "https://www.youtube.com/watch?v=uLOdiGGuoNk");
+                    manager.loadAndPlay(ctx.getChannel(), "https://www.youtube.com/watch?v=CGwH6rZk7VM");
                     manager.getGuildMusicManager(ctx.getGuild()).player.setVolume(100);
                     AudioTrackInfo info = player.getPlayingTrack().getInfo();
 
