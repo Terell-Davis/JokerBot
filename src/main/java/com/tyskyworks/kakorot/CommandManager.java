@@ -1,6 +1,7 @@
 package com.tyskyworks.kakorot;
 
 import com.tyskyworks.kakorot.commands.*;
+import com.tyskyworks.kakorot.commands.extracommands.FixTwitCommand;
 import com.tyskyworks.kakorot.commands.extracommands.MemeCommand;
 import com.tyskyworks.kakorot.commands.jokercommands.*;
 import com.tyskyworks.kakorot.commands.music.*;
@@ -29,11 +30,11 @@ public class CommandManager {
         addCommand(new PlayCommand()); addCommand(new PauseCommand()); addCommand(new EndCommand());
         addCommand(new SkipCommand()); addCommand(new VolumeCommand());addCommand(new ResumeCommand());
 
-
         //Music Other
         addCommand(new AddTrackCommand()); addCommand(new DeleteTrackCommand()); addCommand(new NowPlayingCommand());
         addCommand(new ShuffleCommand()); addCommand(new QueueCommand()); addCommand(new JoinCommand());
-        addCommand(new SoundBoardCommand());
+        addCommand(new SoundBoardCommand()); addCommand(new LoggingCommand()); addCommand(new ClearLogCommand());
+        addCommand(new ShowLogCommand()); addCommand(new BuildPlaylistCommand());
 
         //Joke(r) Commands
         addCommand(new QuoteCommand()); addCommand(new FKCommand()); addCommand(new CockandBallCommand());
@@ -41,8 +42,7 @@ public class CommandManager {
         addCommand(new GunCommand());
 
         //New Commands
-        addCommand(new LoggingCommand()); addCommand(new ShowLogCommand()); addCommand(new ClearLogCommand());
-        addCommand(new BuildPlaylistCommand());
+        addCommand(new FixTwitCommand());
 
 
         /* Disabled
