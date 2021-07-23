@@ -25,7 +25,7 @@ public class JokerBot {
 
         api.addEventListener(new ReadyListener());
         api.getPresence().setStatus(OnlineStatus.ONLINE);
-        api.getPresence().setActivity(Activity.playing("Genshin Impact " + Config.get("PREFIX") + "h"));
+        api.getPresence().setActivity(Activity.playing("Genshin Impact 2.0" + Config.get("PREFIX") + "h"));
 
     }
 }
